@@ -1,9 +1,10 @@
-import { UsuarioModule } from './usuario/usuario.module';
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { join } from "path";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { UsuarioModule } from "./usuario/usuario.module";
+import { AutenticacionModule } from "./autenticacion/autenticacion.module";
 
 // Conecta a la base de datos
 @Module({
@@ -16,8 +17,8 @@ import { AppService } from './app.service';
       password: "",
       database: "integrador",
       entities: [join(__dirname, "**", "*.entity.{.ts,js}")],
-      synchronize: true
-    })],
+      synchronize: false
+    }), AutenticacionModule],
   controllers: [AppController],
   providers: [AppService],
 })
