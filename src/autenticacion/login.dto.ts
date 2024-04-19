@@ -1,10 +1,9 @@
 import { IsNotEmpty, IsString } from "class-validator"
 
 export class LoginDto {
-
     // Los decoradores
     @IsString()
     @IsNotEmpty()
-    nombreUsuario: string
+    nombre_usuario: string
     clave: string
 }

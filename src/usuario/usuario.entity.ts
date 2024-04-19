@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { UsuarioEstado } from "./usuario.enum"
 
 // Nombre de la tabla en la base de datos
-@Entity("usuario")
+@Entity(({name: "usuario"}))
 
 // Las campos de la tabla
 // Cualquier cambio que se haga va tener efecto en la base de datos
@@ -9,7 +10,7 @@ export class UsuarioEntity{
 	@PrimaryGeneratedColumn()
 	id: number
 
-	@Column()
+	@Column(({name: "email"}))
 	email: string
 
     @Column()
@@ -21,8 +22,8 @@ export class UsuarioEntity{
 	@Column()
 	apellido: string
 
-	@Column()
-	estado: string
+	@Column(({type: "enum", enum: UsuarioEstado}))
+	estado: UsuarioEstado
 
 	@Column()
 	nombre_usuario: string

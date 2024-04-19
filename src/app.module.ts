@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { join } from "path";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { JwtModule } from "@nestjs/jwt";
 import { UsuarioModule } from "./usuario/usuario.module";
 import { AutenticacionModule } from "./autenticacion/autenticacion.module";
 
@@ -18,6 +19,13 @@ import { AutenticacionModule } from "./autenticacion/autenticacion.module";
       database: "integrador",
       entities: [join(__dirname, "**", "*.entity.{.ts,js}")],
       synchronize: false
+    }),
+    JwtModule.register({
+      global: true,
+      secret: "secreto",
+      signOptions:{
+        expiresIn: "24h"
+      }
     }), AutenticacionModule],
   controllers: [AppController],
   providers: [AppService],
