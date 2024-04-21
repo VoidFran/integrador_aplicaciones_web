@@ -24,7 +24,7 @@ import { AutenticacionModule } from "./autenticacion/autenticacion.module";
       global: true,
       secret: "secreto",
       signOptions:{
-        expiresIn: "24h"
+        expiresIn: "3m"
       }
     }), AutenticacionModule],
   controllers: [AppController],

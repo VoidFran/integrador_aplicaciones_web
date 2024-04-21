@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
-import { UsuarioEstado } from "./usuario.enum"
 
 // Nombre de la tabla en la base de datos
 @Entity(({name: "usuario"}))
@@ -22,8 +21,8 @@ export class UsuarioEntity{
 	@Column()
 	apellido: string
 
-	@Column(({type: "enum", enum: UsuarioEstado}))
-	estado: UsuarioEstado
+	@Column()
+	estado: string
 
 	@Column()
 	nombre_usuario: string

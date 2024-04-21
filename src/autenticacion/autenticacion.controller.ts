@@ -15,7 +15,7 @@ export class AutenticacionController {
     // Los decoradores
     @Post()
     // Body mapea el cuerpo del html a un objeto
-    login(@Body() loginDto: LoginDto) {
-        this.usuariosService.login(loginDto)
+    async login(@Body() loginDto: LoginDto) {
+        return await this.usuariosService.login(loginDto)
     }
 }

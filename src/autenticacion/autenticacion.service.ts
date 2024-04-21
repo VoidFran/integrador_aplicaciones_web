@@ -1,10 +1,10 @@
-import { Injectable, BadRequestException} from "@nestjs/common"
+import { Injectable} from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { LoginDto } from "./login.dto"
 import { UsuarioEntity } from "../usuario/usuario.entity"
-import { UsuarioEstado } from "../usuario/usuario.enum"
 import * as bcrypt from "bcrypt"
+import { JwtService } from "@nestjs/jwt"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -14,47 +14,44 @@ export class AutenticacionService {
     // El constructor contiene el servicio inyectado
     // A traves del repositorio accede a la base de datos
     constructor(
-        @InjectRepository(UsuarioEntity) private usuarioRepository: Repository<UsuarioEntity>
+        @InjectRepository(UsuarioEntity) private usuarioRepository: Repository<UsuarioEntity>,
+        private jwtService: JwtService
     ){}
     
     // Recibe el objeto del controller
     // Verifica si el usuario es valido 
-    async login(loginDto: LoginDto) {
+    async login(loginDto: LoginDto): Promise<{ token: string }> {
         // Busca el usuario en la base de datos
         const usuario: UsuarioEntity = await this.usuarioRepository.findOne({
             where: {
                 nombre_usuario: loginDto.nombre_usuario,
-                estado: UsuarioEstado.activo
+                estado: "activo"
             }
 	    })
 
         // Si el usuario no es valido tira una excepcion
-        if(!usuario) {
-            console.log("Nombre de usuario no valido")
-            //throw new BadRequestException("Nombre de usuario no valido")
+        if (!usuario) {
+            console.log("Usuario no valido")
         }
+        else if (usuario) {
+            // Recibe un string y la clave hasheada para comparar
+            const clave_correcta: boolean = bcrypt.compareSync(loginDto.clave, usuario.clave)
 
-        //console.log(usuario)
-        //console.log(usuario.nombre_usuario)
-        //console.log(usuario.clave)
-        //console.log(loginDto.nombre_usuario)
-        //console.log(loginDto.clave)
+            // Si la clave no es valida tira una excepcion
+            if (!clave_correcta) {
+                console.log("Clave incorrecta")
+            }
+            else {
+                console.log("Usuario logeado")
+            }
 
-        // Recibe un string y la clave hasheada para comparar
-        //const claveCorrecta: boolean = bcrypt.compareSync(loginDto.clave, usuario.clave)
-        const claveCorrecta: boolean = (loginDto.clave == usuario.clave)
-        console.log(typeof(loginDto.clave))
-        console.log(typeof(usuario.clave))
+            // Firma el jwt con el secreto
+            const token: string = this.jwtService.sign({
+                id: usuario.id,
+                rol: usuario.rol
+            })
 
-        // Si la clave no es valida tira una excepcion
-        if (!claveCorrecta) {
-            console.log("Clave incorrecta")
-            //throw new BadRequestException("Clave incorrecta")  
+            return { token }
         }
-
-        if (usuario && claveCorrecta) {
-            console.log("Usuario logeado")
-        }
-
     }
 }
