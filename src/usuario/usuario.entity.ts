@@ -1,4 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { UsuarioEstadoEnum } from "./usuario_estado.enum"
+import { UsuarioRolesEnum } from "./usuario_roles.enum"
 
 // Nombre de la tabla en la base de datos
 @Entity(({name: "usuario"}))
@@ -9,7 +11,7 @@ export class UsuarioEntity{
 	@PrimaryGeneratedColumn()
 	id: number
 
-	@Column(({name: "email"}))
+	@Column()
 	email: string
 
     @Column()
@@ -21,14 +23,14 @@ export class UsuarioEntity{
 	@Column()
 	apellido: string
 
-	@Column()
-	estado: string
+	@Column({type: "enum", enum: UsuarioEstadoEnum})
+	estado: UsuarioEstadoEnum
 
 	@Column()
 	nombre_usuario: string
 
-	@Column()
-	rol: string
+	@Column({type: "enum", enum: UsuarioRolesEnum})
+	rol: UsuarioRolesEnum
 
     // Guarda la fecha en el que se registro
     @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP"})

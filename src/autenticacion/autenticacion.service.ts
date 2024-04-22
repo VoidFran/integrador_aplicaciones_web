@@ -5,6 +5,7 @@ import { LoginDto } from "./login.dto"
 import { UsuarioEntity } from "../usuario/usuario.entity"
 import * as bcrypt from "bcrypt"
 import { JwtService } from "@nestjs/jwt"
+import { UsuarioEstadoEnum } from "src/usuario/usuario_estado.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -25,7 +26,7 @@ export class AutenticacionService {
         const usuario: UsuarioEntity = await this.usuarioRepository.findOne({
             where: {
                 nombre_usuario: loginDto.nombre_usuario,
-                estado: "activo"
+                estado: UsuarioEstadoEnum.activo
             }
 	    })
 
@@ -43,15 +44,16 @@ export class AutenticacionService {
             }
             else {
                 console.log("Usuario logeado")
+            
+                // Firma el jwt con el secreto
+                const token: string = this.jwtService.sign({
+                    id: usuario.id,
+                    rol: usuario.rol
+                })
+
+                return { token }
             }
-
-            // Firma el jwt con el secreto
-            const token: string = this.jwtService.sign({
-                id: usuario.id,
-                rol: usuario.rol
-            })
-
-            return { token }
         }
     }
+
 }

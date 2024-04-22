@@ -5,5 +5,7 @@ export class LoginDto {
     @IsString()
     @IsNotEmpty()
     nombre_usuario: string
+
+    @IsNotEmpty()
     clave: string
 }

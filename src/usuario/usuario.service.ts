@@ -4,6 +4,8 @@ import { Repository } from "typeorm"
 import { UsuarioEntity } from "./usuario.entity"
 import { UsuarioDto } from "./usuario.interfaz"
 import * as bcrypt from "bcrypt"
+import { UsuarioEstadoEnum } from "./usuario_estado.enum"
+import { UsuarioRolesEnum } from "./usuario_roles.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -20,24 +22,35 @@ export class UsuarioService {
     // Los metodos
     // (): lo que recibe por parametro
     // []: lo que devuelve
-    getAllUsuarios(): Promise<UsuarioEntity[]> {
-        return this.usuarioRepository.find()
+    async getAllUsuarios(): Promise<UsuarioEntity[]> {
+        const usuarios: UsuarioEntity[] = await this.usuarioRepository.find({
+            where: {
+              estado: UsuarioEstadoEnum.activo
+            }
+        })
+        return usuarios
     }
 
-    //getUsuarioById(id: number): Promise<UsuarioEntity> {
-    //    return this.usuarioRepository.findOneBy({id})
-    //}
+    async getUsuarioById(id: number): Promise<any> {
+        const usuario = await this.usuarioRepository.findOne({
+            where: {
+                id,
+                estado: UsuarioEstadoEnum.activo
+            }
+        })
+        return usuario
+    }
 
 	async addUsuario(usuario: UsuarioDto): Promise<any> {
 	    let item = new UsuarioEntity()
         item.email = usuario.email
-        const salt_rounds = 10; // Puedes ajustar este número según tus necesidades
-        item.clave = await bcrypt.hash(usuario.clave, salt_rounds);
+        const salt_rounds = 10 // Puedes ajustar este número según tus necesidades
+        item.clave = await bcrypt.hash(usuario.clave, salt_rounds)
         item.nombre = usuario.nombre
         item.apellido = usuario.apellido
-        item.estado = "activo"
+        item.estado = UsuarioEstadoEnum.activo
         item.nombre_usuario = usuario.nombre_usuario
-        item.rol = usuario.rol
+        item.rol = UsuarioRolesEnum.administrador
         const new_usuario = await this.usuarioRepository.save(item)
         return new_usuario
     }
@@ -49,6 +62,15 @@ export class UsuarioService {
     //}
 
     async deleteUsuario(id: number): Promise<void> {
-        await this.usuarioRepository.delete(id)
+        const usuario = await this.getUsuarioById(id)
+        if (usuario != null) {
+            console.log("usuario borrado")
+            await this.usuarioRepository.delete(id)
+            return usuario
+        }
+        else {
+            const texto = console.log("usuario no encontrado")
+            return texto
+        }
     }
 }

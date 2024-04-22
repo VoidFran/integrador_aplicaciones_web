@@ -3,7 +3,7 @@ import { LoginDto } from "./login.dto"
 import { AutenticacionService } from "./autenticacion.service"
 
 // El endpoint
-@Controller("login")
+@Controller("/login")
 
 // El controlador brinda los endpoints de los servicios
 export class AutenticacionController {
