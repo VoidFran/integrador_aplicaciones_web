@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards } from "@nestjs/common"
 import { UsuarioService } from "./usuario.service"
 import { UsuarioEntity } from "./usuario.entity"
-import { UsuarioDto } from "./usuario.interfaz"
+import { UsuarioDto } from "./usuario.dto"
 import { AutenticacionGuard } from "src/autenticacion/autenticacion.guard"
 import { Roles } from "src/autenticacion/roles.decorator"
 import { UsuarioRolesEnum } from "./usuario_roles.enum"
@@ -36,7 +36,7 @@ export class UsuarioController {
     @UseGuards(AutenticacionGuard)
     async addUsuario(@Body() usuario: UsuarioDto): Promise<UsuarioEntity> {
         console.log("usuario agregado")
-            return await this.usuariosService.addUsuario(usuario)
+        return await this.usuariosService.addUsuario(usuario)
     }
 
     //@Put(":id")

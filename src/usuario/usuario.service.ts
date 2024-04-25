@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { UsuarioEntity } from "./usuario.entity"
-import { UsuarioDto } from "./usuario.interfaz"
+import { UsuarioDto } from "./usuario.dto"
 import * as bcrypt from "bcrypt"
 import { UsuarioEstadoEnum } from "./usuario_estado.enum"
 import { UsuarioRolesEnum } from "./usuario_roles.enum"
@@ -22,6 +22,8 @@ export class UsuarioService {
     // Los metodos
     // (): lo que recibe por parametro
     // []: lo que devuelve
+
+    // Busca los usuarios activos
     async getAllUsuarios(): Promise<UsuarioEntity[]> {
         const usuarios: UsuarioEntity[] = await this.usuarioRepository.find({
             where: {
@@ -31,6 +33,7 @@ export class UsuarioService {
         return usuarios
     }
 
+    // Busca un usuario activo por id
     async getUsuarioById(id: number): Promise<any> {
         const usuario = await this.usuarioRepository.findOne({
             where: {
@@ -41,6 +44,7 @@ export class UsuarioService {
         return usuario
     }
 
+    // Añade un usuario
 	async addUsuario(usuario: UsuarioDto): Promise<any> {
 	    let item = new UsuarioEntity()
         item.email = usuario.email
@@ -50,7 +54,7 @@ export class UsuarioService {
         item.apellido = usuario.apellido
         item.estado = UsuarioEstadoEnum.activo
         item.nombre_usuario = usuario.nombre_usuario
-        item.rol = UsuarioRolesEnum.administrador
+        item.rol = usuario.rol
         const new_usuario = await this.usuarioRepository.save(item)
         return new_usuario
     }
@@ -61,6 +65,7 @@ export class UsuarioService {
     //    const usuario_update = await this.usuarioRepository.save(toUpdate)
     //}
 
+    // Borra un usuario
     async deleteUsuario(id: number): Promise<void> {
         const usuario = await this.getUsuarioById(id)
         if (usuario != null) {

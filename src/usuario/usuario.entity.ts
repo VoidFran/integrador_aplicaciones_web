@@ -7,7 +7,7 @@ import { UsuarioRolesEnum } from "./usuario_roles.enum"
 
 // Las campos de la tabla
 // Cualquier cambio que se haga va tener efecto en la base de datos
-export class UsuarioEntity{
+export class UsuarioEntity {
 	@PrimaryGeneratedColumn()
 	id: number
 
@@ -23,7 +23,7 @@ export class UsuarioEntity{
 	@Column()
 	apellido: string
 
-	@Column({type: "enum", enum: UsuarioEstadoEnum})
+	@Column({type: "enum", enum: UsuarioEstadoEnum, default: "activo"})
 	estado: UsuarioEstadoEnum
 
 	@Column()

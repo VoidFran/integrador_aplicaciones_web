@@ -13,7 +13,7 @@ export class InterceptorInterceptor implements NestInterceptor {
 
         // Agregar el token al encabezado de la solicitud
         request.headers["Authorization"] = `Bearer ${token}`
-        console.log(request.headers["Authorization"] = `Bearer ${token}`)
+        // console.log(request.headers["Authorization"] = `Bearer ${token}`)
 
         return next.handle()
     }

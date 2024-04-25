@@ -1,11 +1,11 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { join } from "path";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { JwtModule } from "@nestjs/jwt";
-import { UsuarioModule } from "./usuario/usuario.module";
-import { AutenticacionModule } from "./autenticacion/autenticacion.module";
+import { Module } from "@nestjs/common"
+import { TypeOrmModule } from "@nestjs/typeorm"
+import { join } from "path"
+import { AppController } from "./app.controller"
+import { AppService } from "./app.service"
+import { JwtModule } from "@nestjs/jwt"
+import { UsuarioModule } from "./usuario/usuario.module"
+import { AutenticacionModule } from "./autenticacion/autenticacion.module"
 
 // Conecta a la base de datos
 @Module({
@@ -24,7 +24,7 @@ import { AutenticacionModule } from "./autenticacion/autenticacion.module";
       global: true,
       secret: "secreto",
       signOptions:{
-        expiresIn: "3m"
+        expiresIn: "5m"
       }
     }), AutenticacionModule],
   controllers: [AppController],
