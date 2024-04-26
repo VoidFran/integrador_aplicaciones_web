@@ -5,12 +5,13 @@ import { AppController } from "./app.controller"
 import { AppService } from "./app.service"
 import { JwtModule } from "@nestjs/jwt"
 import { UsuarioModule } from "./usuario/usuario.module"
+import { ActividadModule } from './actividad/actividad.module';
 import { AutenticacionModule } from "./autenticacion/autenticacion.module"
 
 // Conecta a la base de datos
 @Module({
   imports: [
-    UsuarioModule, TypeOrmModule.forRoot({
+    UsuarioModule, ActividadModule, TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",
       port: 3306,
@@ -23,7 +24,7 @@ import { AutenticacionModule } from "./autenticacion/autenticacion.module"
     JwtModule.register({
       global: true,
       secret: "secreto",
-      signOptions:{
+      signOptions: {
         expiresIn: "5m"
       }
     }), AutenticacionModule],

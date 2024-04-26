@@ -24,7 +24,7 @@ export class UsuarioService {
     // []: lo que devuelve
 
     // Busca los usuarios activos
-    async getAllUsuarios(): Promise<UsuarioEntity[]> {
+    async buscarUsuarios(): Promise<UsuarioEntity[]> {
         const usuarios: UsuarioEntity[] = await this.usuarioRepository.find({
             where: {
               estado: UsuarioEstadoEnum.activo
@@ -34,7 +34,7 @@ export class UsuarioService {
     }
 
     // Busca un usuario activo por id
-    async getUsuarioById(id: number): Promise<any> {
+    async buscarUsuarioId(id: number): Promise<any> {
         const usuario = await this.usuarioRepository.findOne({
             where: {
                 id,
@@ -48,7 +48,7 @@ export class UsuarioService {
     }
 
     // Añade un usuario
-	async addUsuario(usuario: UsuarioDto): Promise<any> {
+	async agregarUsuario(usuario: UsuarioDto): Promise<any> {
 	    let item = new UsuarioEntity()
         item.email = usuario.email
         const salt_rounds = 10 // Puedes ajustar este número según tus necesidades
@@ -58,11 +58,11 @@ export class UsuarioService {
         item.estado = UsuarioEstadoEnum.activo
         item.nombre_usuario = usuario.nombre_usuario
         item.rol = usuario.rol
-        const new_usuario = await this.usuarioRepository.save(item)
-        return new_usuario
+        const crear_usuario = await this.usuarioRepository.save(item)
+        return crear_usuario
     }
 
-    async editUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {
+    async editarUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {
         const usuario = await this.usuarioRepository.findOne({ where: { id } })
         if (!usuario) {
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
@@ -77,13 +77,13 @@ export class UsuarioService {
             usuario.clave = await bcrypt.hash(usuarioDto.clave, saltRounds)
         }
 
-        const usuarioActualizado = await this.usuarioRepository.save(usuario)
-        return usuarioActualizado
+        const usuario_actualizado = await this.usuarioRepository.save(usuario)
+        return usuario_actualizado
     }
 
     // Borra un usuario, mas bien lo pone no_activo
-    async deleteUsuario(id: number): Promise<UsuarioEntity> {
-        const usuario = await this.getUsuarioById(id)
+    async borrarUsuario(id: number): Promise<UsuarioEntity> {
+        const usuario = await this.buscarUsuarioId(id)
         if (usuario != null) {
             usuario.estado = "no_activo"
             return this.usuarioRepository.save(usuario)

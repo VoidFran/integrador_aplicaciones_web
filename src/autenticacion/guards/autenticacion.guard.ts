@@ -29,14 +29,14 @@ export class AutenticacionGuard implements CanActivate {
             const payload = await this.jwtService.verifyAsync(token)
       
             // Busca el usuario que corresponda con el token valido
-            const usuario: UsuarioEntity = await this.usuarioService.getUsuarioById(payload.id)
+            const usuario: UsuarioEntity = await this.usuarioService.buscarUsuarioId(payload.id)
 
             // Trae lo que se configuro en el decorador de roles
             const roles = await this.reflector.get(Roles, context.getHandler())
 
             // Si recibimos un token valido y no hay una restriccion de roles definida en el metodo que estamos custodiando, se va ejecutar ese metodo
             if (!roles) {
-                request["usuario"] = usuario
+                request["usuario"] = usuario // Le asigna el usuario correspondiente a la clave del jwt
                 return true
             }
             // Si roles existe, verifica el rol que tiene el usuario
