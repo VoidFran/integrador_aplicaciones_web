@@ -1,9 +1,8 @@
 import { Module } from "@nestjs/common"
 import { TypeOrmModule } from "@nestjs/typeorm"
-import { UsuarioController } from "./usuario.controller"
-import { UsuarioService } from "./usuario.service"
-import { UsuarioEntity } from "./usuario.entity"
-
+import { UsuarioController } from "./controllers/usuario.controller"
+import { UsuarioService } from "./services/usuario.service"
+import { UsuarioEntity } from "./entities/usuario.entity"
 
 // Incluye el controlador de usuario y servicios usuarios
 @Module({

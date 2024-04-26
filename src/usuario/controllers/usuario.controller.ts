@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards } from "@nestjs/common"
-import { UsuarioService } from "./usuario.service"
-import { UsuarioEntity } from "./usuario.entity"
-import { UsuarioDto } from "./usuario.dto"
-import { AutenticacionGuard } from "src/autenticacion/autenticacion.guard"
-import { Roles } from "src/autenticacion/roles.decorator"
-import { UsuarioRolesEnum } from "./usuario_roles.enum"
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, NotFoundException } from "@nestjs/common"
+import { UsuarioService } from "../services/usuario.service"
+import { UsuarioEntity } from "../entities/usuario.entity"
+import { UsuarioDto } from "../dtos/usuario.dto"
+import { AutenticacionGuard } from "src/autenticacion/guards/autenticacion.guard"
+import { Roles } from "src/autenticacion/decorators/roles.decorator"
+import { UsuarioRolesEnum } from "../enums/usuario_roles.enum"
 
 // El endpoint
 @Controller("/usuarios")
@@ -19,7 +19,6 @@ export class UsuarioController {
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
     async getUsuarios(): Promise<UsuarioEntity[]> {
-        console.log("usuarios encontrados")
         return await this.usuariosService.getAllUsuarios()
     }
 
@@ -27,7 +26,6 @@ export class UsuarioController {
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
     async getUsuario(@Param() params): Promise<UsuarioEntity[]> {
-        console.log("usuario encontrado")
         return await this.usuariosService.getUsuarioById(params.id)
     }
 
@@ -35,14 +33,15 @@ export class UsuarioController {
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
     async addUsuario(@Body() usuario: UsuarioDto): Promise<UsuarioEntity> {
-        console.log("usuario agregado")
         return await this.usuariosService.addUsuario(usuario)
     }
 
-    //@Put(":id")
-    //async editUsuario(@Param() params, @Body() usuario: UsuarioDto) {
-    //    return await this.usuariosService.editUsuario(params.id, usuario)
-    //}
+    @Put(":id")
+    @Roles([UsuarioRolesEnum.administrador])
+    @UseGuards(AutenticacionGuard)
+    async editUsuario(@Param() params, @Body() usuario: UsuarioDto) {
+        return await this.usuariosService.editUsuario(params.id, usuario)
+    }
 
     @Delete(":id")
     @Roles([UsuarioRolesEnum.administrador])

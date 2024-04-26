@@ -1,11 +1,11 @@
-import { Injectable} from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
-import { LoginDto } from "./login.dto"
-import { UsuarioEntity } from "../usuario/usuario.entity"
+import { LoginDto } from "../dtos/login.dto"
+import { UsuarioEntity } from "../../usuario/entities/usuario.entity"
 import * as bcrypt from "bcrypt"
 import { JwtService } from "@nestjs/jwt"
-import { UsuarioEstadoEnum } from "src/usuario/usuario_estado.enum"
+import { UsuarioEstadoEnum } from "src/usuario/enums/usuario_estado.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -33,6 +33,7 @@ export class AutenticacionService {
         // Si el usuario no es valido tira una excepcion
         if (!usuario) {
             console.log("Usuario no valido")
+            throw new NotFoundException("Usuario no valido")
         }
         else if (usuario) {
             // Recibe un string y la clave hasheada para comparar
@@ -41,9 +42,10 @@ export class AutenticacionService {
             // Si la clave no es valida tira una excepcion
             if (!clave_correcta) {
                 console.log("Clave incorrecta")
+                throw new NotFoundException("Clave incorrecta")
             }
             else {
-                console.log("Usuario logeado")
+                console.log(`Usuario con ID ${usuario.id} logeado`)
             
                 // Firma el jwt con el secreto
                 const token: string = this.jwtService.sign({
