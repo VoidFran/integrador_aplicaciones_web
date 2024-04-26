@@ -44,7 +44,6 @@ export class AutenticacionGuard implements CanActivate {
                 request["usuario"] = usuario
                 return true
             }
-            console.log("Permisos insuficientes")
             throw new UnauthorizedException("Permisos insuficientes")
             }
             catch {

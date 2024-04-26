@@ -32,7 +32,6 @@ export class AutenticacionService {
 
         // Si el usuario no es valido tira una excepcion
         if (!usuario) {
-            console.log("Usuario no valido")
             throw new NotFoundException("Usuario no valido")
         }
         else if (usuario) {
@@ -41,12 +40,9 @@ export class AutenticacionService {
 
             // Si la clave no es valida tira una excepcion
             if (!clave_correcta) {
-                console.log("Clave incorrecta")
                 throw new NotFoundException("Clave incorrecta")
             }
             else {
-                console.log(`Usuario con ID ${usuario.id} logeado`)
-            
                 // Firma el jwt con el secreto
                 const token: string = this.jwtService.sign({
                     id: usuario.id,

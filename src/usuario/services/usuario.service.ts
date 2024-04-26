@@ -30,7 +30,6 @@ export class UsuarioService {
               estado: UsuarioEstadoEnum.activo
             }
         })
-        console.log("Usuarios encontrados")
         return usuarios
     }
 
@@ -43,10 +42,8 @@ export class UsuarioService {
             }
         })
         if (!usuario) {
-            console.log("Usuario no encontrado")
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }
-        console.log(`Usuario con ID ${id} encontrado`)
         return usuario
     }
 
@@ -62,14 +59,12 @@ export class UsuarioService {
         item.nombre_usuario = usuario.nombre_usuario
         item.rol = usuario.rol
         const new_usuario = await this.usuarioRepository.save(item)
-        console.log("Usuario añadido")
         return new_usuario
     }
 
     async editUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {
         const usuario = await this.usuarioRepository.findOne({ where: { id } })
         if (!usuario) {
-            console.log(`Usuario con ID ${id} no encontrado`)
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }
 
@@ -82,21 +77,19 @@ export class UsuarioService {
             usuario.clave = await bcrypt.hash(usuarioDto.clave, saltRounds)
         }
 
-        console.log(`Usuario con ID ${id} editado`)
         const usuarioActualizado = await this.usuarioRepository.save(usuario)
         return usuarioActualizado
     }
 
-    // Borra un usuario
-    async deleteUsuario(id: number): Promise<void> {
+    // Borra un usuario, mas bien lo pone no_activo
+    async deleteUsuario(id: number): Promise<UsuarioEntity> {
         const usuario = await this.getUsuarioById(id)
         if (usuario != null) {
-            console.log("Usuario borrado")
-            await this.usuarioRepository.delete(id)
-            return usuario
+            usuario.estado = "no_activo"
+            return this.usuarioRepository.save(usuario)
+            //await this.usuarioRepository.delete(id)
         }
         else if (!usuario) {
-            console.log(`Usuario con ID ${id} no encontrado`)
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }
     }
