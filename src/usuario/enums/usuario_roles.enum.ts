@@ -1,5 +1,5 @@
 export enum UsuarioRolesEnum {
     administrador = "administrador",
-    usuario = "usuario",
+    ejecutor = "ejecutor",
 }
   

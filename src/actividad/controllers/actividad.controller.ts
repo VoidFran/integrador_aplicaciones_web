@@ -15,11 +15,11 @@ export class ActividadController {
     constructor(private actividadService: ActividadService) {}
 
     // Los decoradores
-    @Roles([UsuarioRolesEnum.administrador])
+    @Roles([UsuarioRolesEnum.administrador, UsuarioRolesEnum.ejecutor])
     @UseGuards(AutenticacionGuard)
     @Get()
-    async buscarUsuarios(): Promise<ActividadEntity[]> {
-        return await this.actividadService.buscarActividades()
+    async buscarUsuarios(@Req() request: Request) {
+        return await this.actividadService.buscarActividades(request["usuario"])
     }
 
     @Roles([UsuarioRolesEnum.administrador])

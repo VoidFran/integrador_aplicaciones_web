@@ -6,6 +6,8 @@ import { ActividadDto } from "../dtos/actividad.dto"
 import { ActividadEstadoEnum } from "../enums/actividad_estado.enum"
 import { UsuarioService } from "src/usuario/services/usuario.service"
 import { UsuarioEntity } from "src/usuario/entities/usuario.entity"
+import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
+import { UsuarioEstadoEnum } from "src/usuario/enums/usuario_estado.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -24,10 +26,24 @@ export class ActividadService {
     // (): lo que recibe por parametro
     // []: lo que devuelve
 
-    // Busca los usuarios activos
-    async buscarActividades(): Promise<ActividadEntity[]> {
-        const actividades: ActividadEntity[] = await this.actividadRepository.find({})
-        return actividades
+    // Busca las actividades
+    async buscarActividades(UsuarioEntity: UsuarioEntity): Promise<ActividadEntity[]> {
+        // Guarda el rol del usuario logeado
+        const rol: UsuarioRolesEnum = UsuarioEntity.rol
+
+        // realiza una consulta especifica
+        const consulta = this.actividadRepository.createQueryBuilder("actividad").innerJoin("actividad.usuario_actual", "usuario")
+        // innerJoinandselect si queremos traer tambien los datos del usuario
+
+        // Si el usuario es ejecutor va filtrar las actividades asignadas a el
+        if (rol === UsuarioRolesEnum.ejecutor) {
+            consulta.where("actividad.estado = :estado", {
+                estado: ActividadEstadoEnum.pendiente
+            }).andWhere("usuario.id = :id_usuario", {
+                id_usuario: UsuarioEntity.id
+            })
+        }
+        return await consulta.getMany()
     }
 
     // Añade una actividad con clave foranea
