@@ -35,7 +35,7 @@ export class ActividadService {
         const consulta = this.actividadRepository.createQueryBuilder("actividad").innerJoin("actividad.usuario_actual", "usuario")
         // innerJoinandselect si queremos traer tambien los datos del usuario
 
-        // Si el usuario es ejecutor va filtrar las actividades asignadas a el
+        // Filtra si el usuario es ejecutor y las actividades asignadas a el, tambien si la actividad esta pendiente
         if (rol === UsuarioRolesEnum.ejecutor) {
             consulta.where("actividad.estado = :estado", {
                 estado: ActividadEstadoEnum.pendiente

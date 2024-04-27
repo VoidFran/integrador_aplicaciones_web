@@ -20,9 +20,6 @@ export class UsuarioDto {
     @IsString()
     apellido: string
 
-    @IsEnum(UsuarioEstadoEnum)
-    estado: UsuarioEstadoEnum
-
     @IsNotEmpty()
     @IsString()
     nombre_usuario: string

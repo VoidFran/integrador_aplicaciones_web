@@ -12,7 +12,7 @@ import { UsuarioRolesEnum } from "../enums/usuario_roles.enum"
 // El controlador brinda los endpoints de los servicios
 export class UsuarioController {
     // Accede a los metodos de servicio
-    constructor(private readonly usuarioService: UsuarioService) {}
+    constructor(private usuarioService: UsuarioService) {}
 
     // Los decoradores
     @Roles([UsuarioRolesEnum.administrador])

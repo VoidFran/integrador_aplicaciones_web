@@ -5,7 +5,6 @@ import { UsuarioEntity } from "../entities/usuario.entity"
 import { UsuarioDto } from "../dtos/usuario.dto"
 import * as bcrypt from "bcrypt"
 import { UsuarioEstadoEnum } from "../enums/usuario_estado.enum"
-import { UsuarioRolesEnum } from "../enums/usuario_roles.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -35,14 +34,12 @@ export class UsuarioService {
 
     // Busca un usuario activo por id
     async buscarUsuarioId(id: number): Promise<any> {
-        const usuario = await this.usuarioRepository.findOne({
-            where: {
-                id,
-                estado: UsuarioEstadoEnum.activo
-            }
-        })
+        const usuario = await this.usuarioRepository.findOneBy({id})
         if (!usuario) {
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
+        }
+        else if (usuario.estado === "no_activo") {
+            throw new NotFoundException(`Usuario con ID ${id} no activo`)
         }
         return usuario
     }
