@@ -45,11 +45,11 @@ export class AutenticacionGuard implements CanActivate {
                 return true
             }
             throw new UnauthorizedException("Permisos insuficientes")
-            }
-            catch {
-                throw new UnauthorizedException("Token inválido")
-            }
         }
+        catch {
+            throw new UnauthorizedException("Token inválido")
+        }
+    }
 
     // Extrae el token de la cabecera de datos
     private extractTokenFromHeader(request: Request): string | undefined {

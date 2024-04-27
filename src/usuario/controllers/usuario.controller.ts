@@ -15,37 +15,37 @@ export class UsuarioController {
     constructor(private readonly usuarioService: UsuarioService) {}
 
     // Los decoradores
-    @Get()
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Get()
     async buscarUsuarios(): Promise<UsuarioEntity[]> {
         return await this.usuarioService.buscarUsuarios()
     }
 
-    @Get(":id")
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Get(":id")
     async buscarUsuarioId(@Param() params): Promise<UsuarioEntity[]> {
         return await this.usuarioService.buscarUsuarioId(params.id)
     }
 
-    @Post()
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Post()
     async agregarUsuario(@Body() usuario: UsuarioDto): Promise<UsuarioEntity> {
         return await this.usuarioService.agregarUsuario(usuario)
     }
 
-    @Put(":id")
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Put(":id")
     async editarUsuario(@Param() params, @Body() usuario: UsuarioDto) {
         return await this.usuarioService.editarUsuario(params.id, usuario)
     }
 
-    @Delete(":id")
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Delete(":id")
     async borrarUsuario(@Param() params) {
         return await this.usuarioService.borrarUsuario(params.id)
     }

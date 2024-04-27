@@ -19,8 +19,6 @@ export class ActividadService {
         @InjectRepository(ActividadEntity) private actividadRepository: Repository<ActividadEntity>,
         private usuarioService: UsuarioService
     ){}
-
-
     
     // Los metodos
     // (): lo que recibe por parametro
@@ -32,17 +30,17 @@ export class ActividadService {
         return actividades
     }
 
+    // Añade una actividad con clave foranea
     async crearActividad(actividad: ActividadDto, UsuarioEntity: UsuarioEntity): Promise<any> {
         let item = new ActividadEntity()
-        console.log(item)
+        //const item: ActividadEntity = this.actividadRepository.create()
         item.descripcion = actividad.descripcion
-        console.log(item)
-        item.estado = ActividadEstadoEnum.pendiente
-        item.fecha_modificacion =  new Date()
-        item.prioridad = actividad.prioridad
         item.usuario_actual = await this.usuarioService.buscarUsuarioId(actividad.id_usuario_actual) // Obtiene el objeto correspondiente al usuario que pasaron en el dto
+        item.prioridad = actividad.prioridad
         item.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
-        console.log(item)
+        item.fecha_modificacion = new Date()
+        item.estado = ActividadEstadoEnum.pendiente
+        item.fecha_registro = new Date()
         const crear_actividad = await this.actividadRepository.save(item)
         return crear_actividad
 	}

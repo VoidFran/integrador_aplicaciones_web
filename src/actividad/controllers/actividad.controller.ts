@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from "@nestjs/common"
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Req } from "@nestjs/common"
 import { AutenticacionGuard } from "src/autenticacion/guards/autenticacion.guard"
 import { Roles } from "src/autenticacion/decorators/roles.decorator"
 import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
@@ -12,21 +12,20 @@ import { ActividadDto } from "../dtos/actividad.dto"
 // El controlador brinda los endpoints de los servicios
 export class ActividadController {
     // Accede a los metodos de servicio
-    constructor(private readonly actividadService: ActividadService) {}
+    constructor(private actividadService: ActividadService) {}
 
     // Los decoradores
-    @Get()
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
+    @Get()
     async buscarUsuarios(): Promise<ActividadEntity[]> {
         return await this.actividadService.buscarActividades()
     }
 
+    @Roles([UsuarioRolesEnum.administrador])
+    @UseGuards(AutenticacionGuard)
     @Post()
-    async crearActividad(@Body() request: Request, ActividadDto: ActividadDto) {
-        //return await this.usuariosService.login(loginDto)
-        console.log(request)
+    async crearActividad(@Req() request: Request, @Body() ActividadDto: ActividadDto) {
         return await this.actividadService.crearActividad(ActividadDto, request["usuario"])
-        //return await this.usuariosService.agregarUsuario(usuario)
     }
 }
