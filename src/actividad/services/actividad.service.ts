@@ -7,7 +7,6 @@ import { ActividadEstadoEnum } from "../enums/actividad_estado.enum"
 import { UsuarioService } from "src/usuario/services/usuario.service"
 import { UsuarioEntity } from "src/usuario/entities/usuario.entity"
 import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
-import { UsuarioEstadoEnum } from "src/usuario/enums/usuario_estado.enum"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -18,7 +17,8 @@ export class ActividadService {
     // El constructor contiene el servicio inyectado
     // A traves del repositorio accede a la base de datos
     constructor(
-        @InjectRepository(ActividadEntity) private actividadRepository: Repository<ActividadEntity>,
+        @InjectRepository(ActividadEntity)
+        private actividadRepository: Repository<ActividadEntity>,
         private usuarioService: UsuarioService
     ){}
     
@@ -64,6 +64,8 @@ export class ActividadService {
     // Edita una actividad
     async editarActividad(id: number, actividadDto: ActividadDto): Promise<ActividadEntity> {
         const actividad = await this.actividadRepository.findOne({ where: { id } })
+
+        // Si no lo encuentra tira un exepcion
         if (!actividad) {
             throw new NotFoundException(`Actividad con ID ${id} no encontrada`)
         }
@@ -71,7 +73,45 @@ export class ActividadService {
         // Actualizar solo las propiedades proporcionadas en actividadDto
         Object.assign(actividad, actividadDto)
 
+        // Lo guarda en la base de datos
         const actividad_actualizada = await this.actividadRepository.save(actividad)
         return actividad_actualizada
+    }
+
+    // Edita una actividad
+    async finalizarActividad(id: number, estado: any, UsuarioEntity: UsuarioEntity): Promise<any> {
+        // Busca las actividades pendientes
+        const actividad = await this.actividadRepository.findOne({ where: { id, estado: ActividadEstadoEnum.pendiente } })
+
+        // Si no lo encuentra tira una exepcion
+        if (!actividad) {
+            throw new NotFoundException(`Actividad con ID ${id} no encontrada`)
+        }
+
+        // Actualiza el campo deseado
+        actividad.estado = estado.estado
+        console.log("acti", actividad)
+
+        // Obtiene el usuario que esta ejecutando la accion
+        let usuario = new ActividadEntity()
+        usuario.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
+
+        let usuario_id
+        let id_usuario_actual = estado.id_usuario_actual
+        console.log("quiero id",   id_usuario_actual  )
+
+
+        // Un recorrido para obtener el id del usuario
+        const entries = Object.entries(usuario);
+        entries.forEach(([key, value]) => {
+            if (key === "id") {
+                usuario_id = value
+                console.log("usuario id",  value  )
+            }
+        })
+
+        // Guarda los cambios en la base de datos
+        return await this.actividadRepository.save(actividad)
+        return
     }
 }

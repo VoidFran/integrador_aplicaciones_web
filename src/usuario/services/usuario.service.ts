@@ -15,8 +15,7 @@ export class UsuarioService {
     // El constructor contiene el servicio inyectado
     // A traves del repositorio accede a la base de datos
     constructor(
-        @InjectRepository(UsuarioEntity) private usuarioRepository: Repository<UsuarioEntity>
-    ){}
+        @InjectRepository(UsuarioEntity) private usuarioRepository: Repository<UsuarioEntity>){}
 
     // Los metodos
     // (): lo que recibe por parametro
@@ -24,6 +23,7 @@ export class UsuarioService {
 
     // Busca los usuarios activos
     async buscarUsuarios(): Promise<UsuarioEntity[]> {
+        // Busca los usuarios activos
         const usuarios: UsuarioEntity[] = await this.usuarioRepository.find({
             where: {
               estado: UsuarioEstadoEnum.activo
@@ -35,6 +35,8 @@ export class UsuarioService {
     // Busca un usuario activo por id
     async buscarUsuarioId(id: number): Promise<any> {
         const usuario = await this.usuarioRepository.findOneBy({id})
+
+        // Si no lo encuentra tira una exepcion
         if (!usuario) {
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }
@@ -46,6 +48,7 @@ export class UsuarioService {
 
     // Añade un usuario
 	async agregarUsuario(usuario: UsuarioDto): Promise<any> {
+        // Crea el usuario
 	    let item = new UsuarioEntity()
         item.email = usuario.email
         const salt_rounds = 10 // Puedes ajustar este número según tus necesidades
@@ -55,6 +58,8 @@ export class UsuarioService {
         item.estado = UsuarioEstadoEnum.activo
         item.nombre_usuario = usuario.nombre_usuario
         item.rol = usuario.rol
+
+        // Guarda el usuario en la base de datos
         const crear_usuario = await this.usuarioRepository.save(item)
         return crear_usuario
     }
@@ -62,6 +67,8 @@ export class UsuarioService {
     // Edita un usuario
     async editarUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {
         const usuario = await this.usuarioRepository.findOne({ where: { id } })
+
+        // Si no lo encuentra tira una exepcion
         if (!usuario) {
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }
@@ -75,18 +82,24 @@ export class UsuarioService {
             usuario.clave = await bcrypt.hash(usuarioDto.clave, saltRounds)
         }
 
+        // Guarda el usuario en la base de datos
         const usuario_actualizado = await this.usuarioRepository.save(usuario)
         return usuario_actualizado
     }
 
     // Borra un usuario, mas bien lo pone no_activo
     async borrarUsuario(id: number): Promise<UsuarioEntity> {
+        // Busca el usuario en la base de datos
         const usuario = await this.buscarUsuarioId(id)
+
+        // Si lo encuentra lo desactiva
         if (usuario != null) {
             usuario.estado = "no_activo"
             return this.usuarioRepository.save(usuario)
             //await this.usuarioRepository.delete(id)
         }
+
+        // Si no lo encuentra tira una exepcion
         else if (!usuario) {
             throw new NotFoundException(`Usuario con ID ${id} no encontrado`)
         }

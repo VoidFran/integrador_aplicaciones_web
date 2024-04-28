@@ -5,6 +5,7 @@ import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
 import { ActividadEntity } from "../entities/actividad.entity"
 import { ActividadService } from "../services/actividad.service"
 import { ActividadDto } from "../dtos/actividad.dto"
+import { ActividadEstadoDto } from "../dtos/estado.dto"
 
 // El endpoint
 @Controller("/actividades")
@@ -34,5 +35,12 @@ export class ActividadController {
     @Put(":id")
     async editarActividad(@Param() params, @Body() actividad: ActividadDto) {
         return await this.actividadService.editarActividad(params.id, actividad)
+    }
+
+    @Roles([UsuarioRolesEnum.ejecutor])
+    @UseGuards(AutenticacionGuard)
+    @Delete(":id")
+    async finalizarActividad(@Req() request: Request, @Param() params, @Body() estado: ActividadEstadoDto) {
+        return await this.actividadService.finalizarActividad(params.id, estado, request["usuario"])
     }
 }
