@@ -1,0 +1,4 @@
+id,descripcion,id_usuario_actual,prioridad,id_usuario_modificacion,fecha_modificacion,estado,fecha_registro
+2,terminar la primera entrega,1,alta,1,Sat Apr 27 2024 15:20:17 GMT-0300 (hora estándar de Argentina),pendiente,Sat Apr 27 2024 15:20:17 GMT-0300 (hora estándar de Argentina)
+3,lavar la ropa,68,baja,1,Sat Apr 27 2024 15:59:35 GMT-0300 (hora estándar de Argentina),pendiente,Sat Apr 27 2024 15:59:35 GMT-0300 (hora estándar de Argentina)
+4,ir al gym,68,media,1,Sat Apr 27 2024 15:59:57 GMT-0300 (hora estándar de Argentina),pendiente,Sat Apr 27 2024 15:59:57 GMT-0300 (hora estándar de Argentina)

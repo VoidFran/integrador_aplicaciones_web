@@ -8,9 +8,7 @@ import { AutenticacionService } from "../services/autenticacion.service"
 // El controlador brinda los endpoints de los servicios
 export class AutenticacionController {
     // Verifica si el usuario es valido
-    constructor(private usuariosService: AutenticacionService){
-
-    }
+    constructor(private usuariosService: AutenticacionService) {}
 
     // Los decoradores
     @Post()

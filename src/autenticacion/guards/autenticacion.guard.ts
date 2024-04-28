@@ -9,7 +9,6 @@ import { UsuarioService } from "src/usuario/services/usuario.service"
 export class AutenticacionGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
-   //private configService: ConfigService,
     private usuarioService: UsuarioService,
     private reflector: Reflector
   ){}
