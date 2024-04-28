@@ -7,7 +7,7 @@ import { UsuarioEntity } from "../usuario/entities/usuario.entity"
 import { UsuarioService } from "src/usuario/services/usuario.service"
 import { UsuarioController } from "src/usuario/controllers/usuario.controller"
 
-// Incluye el controlador de usuario y servicios usuarios
+// Incluye el controlador de autenticacion, usuario y servicios usuario
 @Module({
     imports: [TypeOrmModule.forFeature([UsuarioEntity])],
     controllers: [AutenticacionController, UsuarioController],

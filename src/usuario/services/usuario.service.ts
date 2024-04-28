@@ -59,6 +59,7 @@ export class UsuarioService {
         return crear_usuario
     }
 
+    // Edita un usuario
     async editarUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {
         const usuario = await this.usuarioRepository.findOne({ where: { id } })
         if (!usuario) {

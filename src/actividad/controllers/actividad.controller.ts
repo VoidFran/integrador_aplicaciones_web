@@ -28,4 +28,11 @@ export class ActividadController {
     async crearActividad(@Req() request: Request, @Body() ActividadDto: ActividadDto) {
         return await this.actividadService.crearActividad(ActividadDto, request["usuario"])
     }
+
+    @Roles([UsuarioRolesEnum.administrador])
+    @UseGuards(AutenticacionGuard)
+    @Put(":id")
+    async editarActividad(@Param() params, @Body() actividad: ActividadDto) {
+        return await this.actividadService.editarActividad(params.id, actividad)
+    }
 }

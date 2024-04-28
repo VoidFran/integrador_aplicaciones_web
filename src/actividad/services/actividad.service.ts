@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { ActividadEntity } from "../entities/actividad.entity"
@@ -60,4 +60,18 @@ export class ActividadService {
         const crear_actividad = await this.actividadRepository.save(item)
         return crear_actividad
 	}
+
+    // Edita una actividad
+    async editarActividad(id: number, actividadDto: ActividadDto): Promise<ActividadEntity> {
+        const actividad = await this.actividadRepository.findOne({ where: { id } })
+        if (!actividad) {
+            throw new NotFoundException(`Actividad con ID ${id} no encontrada`)
+        }
+
+        // Actualizar solo las propiedades proporcionadas en actividadDto
+        Object.assign(actividad, actividadDto)
+
+        const actividad_actualizada = await this.actividadRepository.save(actividad)
+        return actividad_actualizada
+    }
 }
