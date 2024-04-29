@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString, IsEnum } from "class-validator"
 import { ActividadPrioridadEnum } from "../enums/actividad_prioridad.enum"
+import { ActividadEstadoEnum } from "../enums/actividad_estado.enum"
 
 // Los datos que le va pasar el front-end
 export class ActividadDto {
@@ -13,4 +14,9 @@ export class ActividadDto {
     @IsString()
     @IsEnum(ActividadPrioridadEnum)
     prioridad: ActividadPrioridadEnum
+
+    @IsNotEmpty()
+    @IsString()
+    @IsEnum(ActividadEstadoEnum)
+    estado: ActividadEstadoEnum
 }

@@ -2,7 +2,6 @@ import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Req } from 
 import { AutenticacionGuard } from "src/autenticacion/guards/autenticacion.guard"
 import { Roles } from "src/autenticacion/decorators/roles.decorator"
 import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
-import { ActividadEntity } from "../entities/actividad.entity"
 import { ActividadService } from "../services/actividad.service"
 import { ActividadDto } from "../dtos/actividad.dto"
 import { ActividadEstadoDto } from "../dtos/estado.dto"

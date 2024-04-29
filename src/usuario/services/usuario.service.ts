@@ -29,6 +29,7 @@ export class UsuarioService {
               estado: UsuarioEstadoEnum.activo
             }
         })
+
         return usuarios
     }
 
@@ -43,6 +44,7 @@ export class UsuarioService {
         else if (usuario.estado === "no_activo") {
             throw new NotFoundException(`Usuario con ID ${id} no activo`)
         }
+
         return usuario
     }
 

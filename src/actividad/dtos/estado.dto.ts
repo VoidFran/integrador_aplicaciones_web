@@ -7,7 +7,4 @@ export class ActividadEstadoDto {
     @IsString()
     @IsEnum(ActividadEstadoEnum)
     estado: ActividadEstadoEnum
-
-    @IsNotEmpty()
-    id_usuario_actual: number
 }

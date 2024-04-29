@@ -43,6 +43,7 @@ export class ActividadService {
                 id_usuario: UsuarioEntity.id
             })
         }
+
         return await consulta.getMany()
     }
 
@@ -57,6 +58,8 @@ export class ActividadService {
         item.fecha_modificacion = new Date()
         item.estado = ActividadEstadoEnum.pendiente
         item.fecha_registro = new Date()
+        
+        // Guarda la actividad en la base de datos
         const crear_actividad = await this.actividadRepository.save(item)
         return crear_actividad
 	}
@@ -70,12 +73,18 @@ export class ActividadService {
             throw new NotFoundException(`Actividad con ID ${id} no encontrada`)
         }
 
-        // Actualizar solo las propiedades proporcionadas en actividadDto
-        Object.assign(actividad, actividadDto)
+        // Verifica que el usuario existe
+        actividadDto.id_usuario_actual = await this.usuarioService.buscarUsuarioId(actividadDto.id_usuario_actual) // Obtiene el objeto correspondiente al usuario que pasaron en el dto
 
-        // Lo guarda en la base de datos
-        const actividad_actualizada = await this.actividadRepository.save(actividad)
-        return actividad_actualizada
+        if (actividad.id_usuario_actual) {
+            // Actualizar solo las propiedades proporcionadas en actividadDto
+            Object.assign(actividad, actividadDto)
+            actividad.fecha_modificacion = new Date()
+    
+            // Lo guarda en la base de datos
+            const actividad_actualizada = await this.actividadRepository.save(actividad)
+            return actividad_actualizada
+        }
     }
 
     // Edita una actividad
@@ -90,28 +99,28 @@ export class ActividadService {
 
         // Actualiza el campo deseado
         actividad.estado = estado.estado
-        console.log("acti", actividad)
 
         // Obtiene el usuario que esta ejecutando la accion
         let usuario = new ActividadEntity()
         usuario.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
 
-        let usuario_id
-        let id_usuario_actual = estado.id_usuario_actual
-        console.log("quiero id",   id_usuario_actual  )
+        let id_usuario_actual
+        let id_usuario_actividad = actividad.id_usuario_actual
 
-
-        // Un recorrido para obtener el id del usuario
-        const entries = Object.entries(usuario);
+        // Un recorrido para obtener el id del usuario actual
+        const entries = Object.entries(usuario.usuario_modificacion)
         entries.forEach(([key, value]) => {
             if (key === "id") {
-                usuario_id = value
-                console.log("usuario id",  value  )
+                id_usuario_actual = value
             }
         })
 
-        // Guarda los cambios en la base de datos
-        return await this.actividadRepository.save(actividad)
-        return
+        // Compara si el id del usuario actual corresponde con el de la actividad
+        if (id_usuario_actual === id_usuario_actividad) {
+            actividad.id_usuario_modificacion = id_usuario_actual
+
+            // Guarda los cambios en la base de datos
+            return await this.actividadRepository.save(actividad)
+        }
     }
 }
