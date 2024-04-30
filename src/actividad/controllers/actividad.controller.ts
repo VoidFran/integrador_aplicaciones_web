@@ -32,8 +32,8 @@ export class ActividadController {
     @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
     @Put(":id")
-    async editarActividad(@Param() params, @Body() actividad: ActividadDto) {
-        return await this.actividadService.editarActividad(params.id, actividad)
+    async editarActividad(@Req() request: Request, @Param() params, @Body() actividad: ActividadDto) {
+        return await this.actividadService.editarActividad(params.id, actividad, request["usuario"])
     }
 
     @Roles([UsuarioRolesEnum.ejecutor])

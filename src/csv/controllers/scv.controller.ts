@@ -12,7 +12,7 @@ export class CsvController {
     constructor(private readonly csvService: CsvService, private actividadService: ActividadService) {}
 
     // Los decoradores
-    @Roles([UsuarioRolesEnum.administrador, UsuarioRolesEnum.ejecutor])
+    @Roles([UsuarioRolesEnum.administrador])
     @UseGuards(AutenticacionGuard)
     @Get()
     async exportarCsv(@Req() request: Request) {

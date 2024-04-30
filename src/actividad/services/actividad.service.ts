@@ -65,13 +65,17 @@ export class ActividadService {
 	}
 
     // Edita una actividad
-    async editarActividad(id: number, actividadDto: ActividadDto): Promise<ActividadEntity> {
+    async editarActividad(id: number, actividadDto: ActividadDto, UsuarioEntity: UsuarioEntity): Promise<ActividadEntity> {
         const actividad = await this.actividadRepository.findOne({ where: { id } })
 
         // Si no lo encuentra tira un exepcion
         if (!actividad) {
             throw new NotFoundException(`Actividad con ID ${id} no encontrada`)
         }
+
+        // Obtiene el usuario que esta ejecutando la accion
+        let actividad_usuario = new ActividadEntity()
+        actividad_usuario.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
 
         // Verifica que el usuario existe
         actividadDto.id_usuario_actual = await this.usuarioService.buscarUsuarioId(actividadDto.id_usuario_actual) // Obtiene el objeto correspondiente al usuario que pasaron en el dto
@@ -80,6 +84,7 @@ export class ActividadService {
             // Actualizar solo las propiedades proporcionadas en actividadDto
             Object.assign(actividad, actividadDto)
             actividad.fecha_modificacion = new Date()
+            actividad.id_usuario_modificacion = actividad_usuario.usuario_modificacion.id
     
             // Lo guarda en la base de datos
             const actividad_actualizada = await this.actividadRepository.save(actividad)
@@ -101,14 +106,14 @@ export class ActividadService {
         actividad.estado = estado.estado
 
         // Obtiene el usuario que esta ejecutando la accion
-        let usuario = new ActividadEntity()
-        usuario.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
+        let actividad_usuario = new ActividadEntity()
+        actividad_usuario.usuario_modificacion = UsuarioEntity // Forma por fuera del dto para saber cual usuario realiza la accion
 
         let id_usuario_actual
         let id_usuario_actividad = actividad.id_usuario_actual
 
         // Un recorrido para obtener el id del usuario actual
-        const entries = Object.entries(usuario.usuario_modificacion)
+        const entries = Object.entries(actividad_usuario.usuario_modificacion)
         entries.forEach(([key, value]) => {
             if (key === "id") {
                 id_usuario_actual = value
