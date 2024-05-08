@@ -11,7 +11,7 @@ export class UsuarioEntity {
 	@PrimaryGeneratedColumn()
 	id: number
 
-	@Column()
+	@Column({ unique: true })
 	email: string
 
     @Column()
@@ -26,7 +26,7 @@ export class UsuarioEntity {
 	@Column({type: "enum", enum: UsuarioEstadoEnum, default: "activo"})
 	estado: UsuarioEstadoEnum
 
-	@Column()
+	@Column({ unique: true })
 	nombre_usuario: string
 
 	@Column({type: "enum", enum: UsuarioRolesEnum})

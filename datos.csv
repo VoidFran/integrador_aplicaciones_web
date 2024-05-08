@@ -1,5 +1,5 @@
 id,descripcion,id_usuario_actual,prioridad,id_usuario_modificacion,fecha_modificacion,estado,fecha_registro
 2,terminar la primera entrega,1,alta,1,Sun Apr 28 2024 22:00:37 GMT-0300 (hora estándar de Argentina),finalizado,Sun Apr 28 2024 22:00:37 GMT-0300 (hora estándar de Argentina)
-3,lavar la ropa,68,baja,68,Sun Apr 28 2024 22:02:49 GMT-0300 (hora estándar de Argentina),finalizado,Sun Apr 28 2024 22:00:55 GMT-0300 (hora estándar de Argentina)
+3,lavar la ropa,68,baja,1,Sun Apr 28 2024 22:02:49 GMT-0300 (hora estándar de Argentina),pendiente,Sun Apr 28 2024 22:00:55 GMT-0300 (hora estándar de Argentina)
 4,ir al gym,68,media,1,Sun Apr 28 2024 22:01:46 GMT-0300 (hora estándar de Argentina),pendiente,Sun Apr 28 2024 22:01:46 GMT-0300 (hora estándar de Argentina)
-5,lavar la ropa,68,baja,68,Tue Apr 30 2024 14:03:03 GMT-0300 (hora estándar de Argentina),pendiente,Tue Apr 30 2024 13:31:48 GMT-0300 (hora estándar de Argentina)
+5,ir a pasear el perro,68,media,1,Tue Apr 30 2024 17:49:15 GMT-0300 (hora estándar de Argentina),pendiente,Tue Apr 30 2024 17:49:15 GMT-0300 (hora estándar de Argentina)

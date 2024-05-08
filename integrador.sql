@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 03:06:16
+-- Tiempo de generación: 30-04-2024 a las 21:59:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -90,7 +90,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `email`, `clave`, `nombre`, `apellido`, `Estado`, `nombre_usuario`, `rol`, `fecha_registro`) VALUES
 (1, 'franciscof2menosf1@gmail.com', '$2b$10$8CUhQks1PMbMYR7XUVmabO4h3t5BSBouPI..XdRpSUJ6mxGDjWTDe', 'Francisco', 'Rondan', 'activo', 'fran', 'administrador', '2024-04-14 20:23:57'),
-(62, 'francisco_gearfried@outlook.com', '$2b$10$ZiWfcZbs..6weaR9VB3oxOn.57gt.ZUd5cu3OyiYQ8aBQ3ViC9Rfm', 'Brian', 'Baldeon', 'no_activo', 'brian', 'administrador', '2024-04-27 18:34:45'),
+(62, 'francisco_gearfried@outlook.com', '$2b$10$ZiWfcZbs..6weaR9VB3oxOn.57gt.ZUd5cu3OyiYQ8aBQ3ViC9Rfm', 'Brian', 'Baldeon', 'activo', 'brian', 'administrador', '2024-04-27 18:34:45'),
 (68, 'francisco_gearfried@outlook.com', '$2b$10$eCAMfBVO5BBLSsenoUKmieJGjssnp30aM7.2qMNEclgFGpsyljUzm', 'Gonzalo', 'Garay', 'activo', 'gonza', 'ejecutor', '2024-04-27 18:57:31'),
 (69, 'francisco_gearfried@outlook.com', '$2b$10$hYjw40xy.xOlYkZBQH2eYO8OuddvO6Axuj3BXY6yqxwjLcE6E61oC', 'a', 'a', 'no_activo', 'a', 'ejecutor', '2024-04-27 18:58:17');
 

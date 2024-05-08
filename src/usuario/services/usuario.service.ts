@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common"
+import { ConflictException, Injectable, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { UsuarioEntity } from "../entities/usuario.entity"
@@ -51,20 +51,27 @@ export class UsuarioService {
     // Añade un usuario
 	async agregarUsuario(usuario: UsuarioDto): Promise<any> {
         // Crea el usuario
-	    let item = new UsuarioEntity()
-        item.email = usuario.email
-        const salt_rounds = 10 // Puedes ajustar este número según tus necesidades
-        item.clave = await bcrypt.hash(usuario.clave, salt_rounds)
-        item.nombre = usuario.nombre
-        item.apellido = usuario.apellido
-        item.estado = UsuarioEstadoEnum.activo
-        item.nombre_usuario = usuario.nombre_usuario
-        item.rol = usuario.rol
+        let item = new UsuarioEntity()
+        try {
+            item.email = usuario.email
+            const salt_rounds = 10 // Puedes ajustar este número según tus necesidades
+            item.clave = await bcrypt.hash(usuario.clave, salt_rounds)
+            item.nombre = usuario.nombre
+            item.apellido = usuario.apellido
+            item.estado = UsuarioEstadoEnum.activo
+            item.nombre_usuario = usuario.nombre_usuario
+            item.rol = usuario.rol
 
-        // Guarda el usuario en la base de datos
-        const crear_usuario = await this.usuarioRepository.save(item)
-        return crear_usuario
-    }
+            // Guarda el usuario en la base de datos
+            const crear_usuario = await this.usuarioRepository.save(item)
+            return crear_usuario
+          } catch (error) {
+            // Si la excepción es por un correo electrónico duplicado, lanzamos una ConflictException
+            if (error.code === "ER_DUP_ENTRY") {
+                throw new ConflictException("El correo electrónico o nombre de usuario ya están registrados")
+            }
+          }
+        }  
 
     // Edita un usuario
     async editarUsuario(id: number, usuarioDto: UsuarioDto): Promise<UsuarioEntity> {

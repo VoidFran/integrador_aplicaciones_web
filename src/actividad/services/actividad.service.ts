@@ -47,6 +47,14 @@ export class ActividadService {
         return await consulta.getMany()
     }
 
+    async buscarActividadesPorIdUsuario(idUsuario: number): Promise<ActividadEntity[]> {
+        return await this.actividadRepository.find({
+            where: {
+                id_usuario_actual: idUsuario
+            }
+        })
+    }
+
     // Añade una actividad con clave foranea
     async crearActividad(actividad: ActividadDto, UsuarioEntity: UsuarioEntity): Promise<any> {
         let item = new ActividadEntity()
