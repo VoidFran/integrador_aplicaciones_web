@@ -1,0 +1,8 @@
+<button (click)="greet()">probando</button>
+
+@if (EstaLogeado) {
+	<p>bienvenido</p>
+} @else {
+	<p>iniciar sesion</p>
+	<button (click)="EstaLogeado = true">logear</button>
+}
