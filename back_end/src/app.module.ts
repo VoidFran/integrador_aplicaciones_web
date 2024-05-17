@@ -26,7 +26,7 @@ import { CsvModule } from "./csv/csv.module"
       global: true,
       secret: "secreto",
       signOptions: {
-        expiresIn: "5m"
+        expiresIn: "1m"
       }
     })],
   controllers: [AppController],

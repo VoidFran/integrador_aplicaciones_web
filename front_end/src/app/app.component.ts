@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { IntegrantesComponent } from './integrantes/integrantes.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdministradorComponent } from './components/administrador/administrador.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UsuarioComponent, IntegrantesComponent],
-  template: `<section> <app-usuario></app-usuario> <app-integrantes></app-integrantes> </section>`,
+  imports: [RouterOutlet, LoginComponent, AdministradorComponent],
+  template: `<section> <router-outlet></router-outlet> </section>`,
   styleUrl: './app.component.css'
 })
 export class AppComponent {

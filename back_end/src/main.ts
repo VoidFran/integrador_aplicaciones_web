@@ -3,12 +3,16 @@ import { AppModule } from "./app.module"
 import { ValidationPipe } from "@nestjs/common"
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
-  app.useGlobalPipes(new ValidationPipe({
-    forbidNonWhitelisted: true
-  }))
-  await app.listen(3000)
+    const app = await NestFactory.create(AppModule)
+    app.useGlobalPipes(new ValidationPipe({
+        forbidNonWhitelisted: true
+    }))
 
-  console.log("hola mundo")
+    // Enable CORS
+    app.enableCors()
+
+    await app.listen(3000)
+
+    console.log("hola mundo")
 }
 bootstrap()
