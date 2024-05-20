@@ -7,7 +7,7 @@ import { AdministradorComponent } from './components/administrador/administrador
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LoginComponent, AdministradorComponent],
-  template: `<section> <router-outlet></router-outlet> </section>`,
+  template: `<router-outlet></router-outlet>`,
   styleUrl: './app.component.css'
 })
 export class AppComponent {

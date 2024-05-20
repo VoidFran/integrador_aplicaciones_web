@@ -7,12 +7,14 @@ import {ToastModule} from 'primeng/toast'
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, InputTextModule, PasswordModule, ButtonModule, ToastModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: '../../app.component.css'
 })
 export class LoginComponent {
   form = new FormGroup({

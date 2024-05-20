@@ -1,7 +1,12 @@
-<h1>ejecutor</h1>
-@for (integrante of integrantes; track integrante.id) {
-    <li> {{ integrante.nombre }} </li>
-    <li> {{ integrante.nombre }} </li>
-}
 
-<p-button (onClick)="logout()">cerrar sesion</p-button>
+<app-base>
+      
+    
+    <div class="ejecutor">
+        <h1>ejecutor</h1>
+        @for (integrante of integrantes; track integrante.id){
+        <li> {{ integrante.nombre }} </li>
+        }
+    </div> 
+ 
+</app-base>

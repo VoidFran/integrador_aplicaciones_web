@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    color-scheme: light dark;
+   color-scheme: light dark;
+}
+body {
+   margin: 0;
+   color: #e9e6f0;
 }

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ButtonModule } from 'primeng/button';
+import { BaseComponent
 
+ } from '../base/base.component';
 @Component({
   selector: 'app-ejecutor',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [ButtonModule , BaseComponent],
   templateUrl: './ejecutor.component.html',
   styleUrl: './ejecutor.component.css'
 })
