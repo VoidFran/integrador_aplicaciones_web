@@ -1,0 +1,67 @@
+<app-base>
+    <div class="card text-white bg-success mb-3 text-center" style="max-width: 30rem;">
+      <div class="card-header">{{operacion}} usuario</div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="addUsuario()">
+          <div class="row">
+            <div class="col-md-6">
+              <input formControlName="email" type="text" class="form-control mt-2" placeholder="Ingrese email nuevo">
+              <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+                Email es requerido y debe ser válido.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input formControlName="clave" type="password" class="form-control mt-2" placeholder="Ingrese clave nueva">
+              <div *ngIf="form.get('clave')?.invalid && form.get('clave')?.touched" class="text-danger">
+                Clave es requerida.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input formControlName="nombre" type="text" class="form-control mt-2" placeholder="Ingrese nombre nuevo">
+              <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-danger">
+                Nombre es requerido.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input formControlName="apellido" type="text" class="form-control mt-2" placeholder="Ingrese apellido nuevo">
+              <div *ngIf="form.get('apellido')?.invalid && form.get('apellido')?.touched" class="text-danger">
+                Apellido es requerido.
+              </div>
+            </div>
+            <div class="col-12">
+              <input formControlName="nombre_usuario" type="text" class="form-control mt-2" placeholder="nombre de usuario nuevo">
+              <div *ngIf="form.get('nombre_usuario')?.invalid && form.get('nombre_usuario')?.touched" class="text-danger">
+                Nombre de usuario es requerido y no debe exceder los 7 caracteres.
+              </div>
+            </div>
+          </div>
+  
+          <label for="estadoSelect" class="form-label mt-4">Seleccione estado del usuario</label>
+          <select class="form-select" id="estadoSelect" formControlName="estado">
+            <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
+          </select>
+          <div *ngIf="form.get('estado')?.invalid && form.get('estado')?.touched" class="text-danger">
+            Estado es requerido.
+          </div>
+  
+          <label for="rolSelect" class="form-label mt-4">Seleccione rol del usuario</label>
+          <select class="form-select" id="rolSelect" formControlName="rol">
+            <option *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>
+          </select>
+          <div *ngIf="form.get('rol')?.invalid && form.get('rol')?.touched" class="text-danger">
+            Rol es requerido.
+          </div>
+  
+          <div class="row mt-4 text-center">
+            <div class="col-6">
+              <button type="submit" [disabled]="form.invalid" class="btn btn-info btn-block">Aceptar</button>
+            </div>
+            <div class="col-6">
+              <button routerLink="/GestionUsuarios" class="btn btn-secondary btn-block">Volver</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </app-base>
+  

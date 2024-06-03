@@ -1,0 +1,33 @@
+:host {
+    display: grid;
+    height: 100vh; /* La vista ocupa toda la altura de la pantalla */
+    place-items: center; /* Centrar horizontal y verticalmente */
+    place-content: center;/* Centrar horizontal y verticalmente */
+    background: rgb(10,8,37);
+    background: linear-gradient(90deg, rgba(10,8,37,1) 25%, rgba(96,96,150,1) 50%, rgba(36,36,57,1) 75%, rgba(32,32,50,1) 100%);
+
+  }
+  
+  .container {
+    display: grid; /* Centrar el contenido dentro del contenedor */
+
+  }
+  
+  .p-card-body {
+    border: 3px solid #1a1919;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Ancho de la card */
+  }
+  
+
+  .p-field {
+    margin-bottom: 2rem;
+  }
+  
+  button {
+    width: 100%;
+    place-items: center;
+    
+  }
+

@@ -1,0 +1,45 @@
+<app-base>
+
+    <button *ngIf="listaUsuarios.length > 0" type="button" class="btn btn-dark" routerLink="/addusuarios">Agregar usuario</button>
+    <button type="button" class="btn btn-dark" routerLink="/administrador">Actividades</button>
+    <table *ngIf="listaUsuarios.length > 0" class="table table-hover mt-4 ">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <!-- <th scope="col">Clave</th> --> <!--si se descomenta muestra la clave-->
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Nombre de usuario</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Fecha de Registro</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaUsuarios" class="table-dark">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.email }}</td>
+          <!-- <td>{{ item.clave }}</td> --> <!--si se descomenta muestra la clave-->
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.apellido }}</td>
+          <td>{{ item.estado }}</td>
+          <td>{{ item.nombre_usuario }}</td>
+          <td>{{ item.rol }}</td>
+          <td>{{ item.fecha_registro | date:'dd/MM/yyyy'}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-success" routerLink="/edit/{{item.id}}">editar</button>
+
+          </td>
+          <td>
+            <button (click)="eliminarUsuario(item.id)" type="button" class="btn btn-outline-danger">eliminar</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 *ngIf="listaUsuarios.length== 0">Error al encontrar usuarios :C</h5>
+  </app-base>
+  

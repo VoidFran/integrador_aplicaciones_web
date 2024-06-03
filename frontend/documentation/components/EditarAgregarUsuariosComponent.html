@@ -1,0 +1,1060 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>probando-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">probando-angular documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EditarAgregarUsuariosComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-editar-agregar-usuarios</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/BaseComponent.html" target="_self" >BaseComponent</a></code>
+                            <code>CommonModule</code>
+                            <code>RouterLink</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./editar-agregar-usuarios.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./editar-agregar-usuarios.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#estados" >estados</a>
+                            </li>
+                            <li>
+                                <a href="#estadoUsuario" >estadoUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#operacion" >operacion</a>
+                            </li>
+                            <li>
+                                <a href="#roles" >roles</a>
+                            </li>
+                            <li>
+                                <a href="#rolesList" >rolesList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addUsuario" >addUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#getUnUsuario" >getUnUsuario</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#logFormErrors" >logFormErrors</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, _usuarioService: <a href="../injectables/UsuariosService.html" target="_self">UsuariosService</a>, router: Router, aRouter: ActivatedRoute)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_usuarioService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsuariosService.html" target="_self" >UsuariosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>aRouter</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addUsuario"></a>
+                    <span class="name">
+                        <span ><b>addUsuario</b></span>
+                        <a href="#addUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addUsuario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUnUsuario"></a>
+                    <span class="name">
+                        <span ><b>getUnUsuario</b></span>
+                        <a href="#getUnUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUnUsuario(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logFormErrors"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>logFormErrors</b></span>
+                        <a href="#logFormErrors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>logFormErrors()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estados"></a>
+                    <span class="name">
+                        <span ><b>estados</b></span>
+                        <a href="#estados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.values(UsuarioEstadoEnum)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estadoUsuario"></a>
+                    <span class="name">
+                        <span ><b>estadoUsuario</b></span>
+                        <a href="#estadoUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>UsuarioEstadoEnum</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="operacion"></a>
+                    <span class="name">
+                        <span ><b>operacion</b></span>
+                        <a href="#operacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Registrar&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roles"></a>
+                    <span class="name">
+                        <span ><b>roles</b></span>
+                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>RolesEnum</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rolesList"></a>
+                    <span class="name">
+                        <span ><b>rolesList</b></span>
+                        <a href="#rolesList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.values(RolesEnum)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/editar-agregar-usuarios/editar-agregar-usuarios.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { UsuarioEstadoEnum } from &#x27;../enums/usuario_estado.enum&#x27;;
+import { RolesEnum } from &#x27;../enums/roles.enum&#x27;;
+import { BaseComponent } from &#x27;../base/base.component&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterLink, Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { GestionUsuariosComponent } from &#x27;../gestion-usuarios/gestion-usuarios.component&#x27;;
+import { UsuarioDto } from &#x27;../../dtos/usuario.dto&#x27;;
+import { UsuariosService } from &#x27;../../services/usuarios.service&#x27;;
+@Component({
+  selector: &#x27;app-editar-agregar-usuarios&#x27;,
+  standalone: true,
+  imports: [BaseComponent, CommonModule, RouterLink, ReactiveFormsModule],
+  templateUrl: &#x27;./editar-agregar-usuarios.component.html&#x27;,
+  styleUrls: [&#x27;./editar-agregar-usuarios.component.css&#x27;]
+})
+export class EditarAgregarUsuariosComponent {
+  estadoUsuario &#x3D; UsuarioEstadoEnum;
+  roles &#x3D; RolesEnum;
+  estados &#x3D; Object.values(UsuarioEstadoEnum);
+  rolesList &#x3D; Object.values(RolesEnum);
+
+  form: FormGroup;
+
+  id: number;
+  operacion: string &#x3D; &#x27;Registrar&#x27;
+
+  constructor(private fb: FormBuilder, 
+    private _usuarioService: 
+    UsuariosService, 
+    private router: Router, 
+    private aRouter: ActivatedRoute
+  
+  ) {
+    this.form &#x3D; this.fb.group({
+      email: [&#x27;&#x27;, [Validators.required, Validators.email]],
+      clave: [&#x27;&#x27;, Validators.required],
+      nombre: [&#x27;&#x27;, Validators.required],
+      apellido: [&#x27;&#x27;, Validators.required],
+      estado: [&#x27;&#x27;, Validators.required],
+      nombre_usuario: [&#x27;&#x27;, [Validators.required, Validators.maxLength(7)]],
+      rol: [&#x27;&#x27;, Validators.required]
+    });
+
+    this.id &#x3D; Number(aRouter.snapshot.paramMap.get(&#x27;id&#x27;))
+    
+  }
+
+    ngOnInit(): void{
+
+      if(this.id !&#x3D;0){
+        this.operacion &#x3D; &quot;Editar&quot;
+      };
+
+
+      this.getUnUsuario(this.id);
+    }
+
+    getUnUsuario(id:number){
+      this._usuarioService.getUsuario(id).subscribe((data: UsuarioDto)&#x3D;&gt;{
+        this.form.setValue({
+          email: data.email,
+          clave: data.clave,
+          nombre: data.nombre,
+          apellido: data.apellido,
+          estado: data.estado,
+          nombre_usuario: data.nombre_usuario,
+          rol: data.rol
+        })
+
+      })
+    }
+
+
+  addUsuario() {
+    if (this.form.valid) {
+     
+      
+      const usuariosUsuarios: UsuarioDto &#x3D;{
+   
+        id: this.form.value.id,
+        email: this.form.value.email,
+        clave: this.form.value.clave,
+        nombre: this.form.value.nombre,
+        apellido: this.form.value.apellido,
+        estado: this.form.value.estado,
+        nombre_usuario: this.form.value.nombre_usuario,
+        rol: this.form.value.rol,
+        fecha_registro: this.form.value.fecha_registro
+      }
+
+      if(this.id !&#x3D;&#x3D; 0){
+        usuariosUsuarios.id &#x3D; this.id;
+        this._usuarioService.editarUsuario(this.id, usuariosUsuarios).subscribe(() &#x3D;&gt;{
+            this.router.navigate([&#x27;/GestionUsuarios&#x27;]);
+          })   
+
+       
+
+      }else{
+
+        
+        this._usuarioService.crearUsuario(usuariosUsuarios).subscribe(() &#x3D;&gt;{
+        console.log(&quot;Usuario Creado&quot;)
+        this.router.navigate([&#x27;/GestionUsuarios&#x27;]);
+      })
+      
+      }
+
+    } else {
+      console.log(&#x27;El formulario no es válido&#x27;);
+      this.form.markAllAsTouched(); 
+      this.logFormErrors();
+    }
+  }
+
+
+
+  private logFormErrors() {
+    Object.keys(this.form.controls).forEach(key &#x3D;&gt; {
+      const control &#x3D; this.form.get(key);
+      if (control &amp;&amp; control.errors) {  
+        console.log(&#x60;Error en el control ${key}:&#x60;, control.errors);
+      }
+    });
+  }
+
+
+
+
+
+
+  
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-base&gt;
+    &lt;div class&#x3D;&quot;card text-white bg-success mb-3 text-center&quot; style&#x3D;&quot;max-width: 30rem;&quot;&gt;
+      &lt;div class&#x3D;&quot;card-header&quot;&gt;{{operacion}} usuario&lt;/div&gt;
+      &lt;div class&#x3D;&quot;card-body&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;addUsuario()&quot;&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+              &lt;input formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control mt-2&quot; placeholder&#x3D;&quot;Ingrese email nuevo&quot;&gt;
+              &lt;div *ngIf&#x3D;&quot;form.get(&#x27;email&#x27;)?.invalid &amp;&amp; form.get(&#x27;email&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+                Email es requerido y debe ser válido.
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+              &lt;input formControlName&#x3D;&quot;clave&quot; type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control mt-2&quot; placeholder&#x3D;&quot;Ingrese clave nueva&quot;&gt;
+              &lt;div *ngIf&#x3D;&quot;form.get(&#x27;clave&#x27;)?.invalid &amp;&amp; form.get(&#x27;clave&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+                Clave es requerida.
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+              &lt;input formControlName&#x3D;&quot;nombre&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control mt-2&quot; placeholder&#x3D;&quot;Ingrese nombre nuevo&quot;&gt;
+              &lt;div *ngIf&#x3D;&quot;form.get(&#x27;nombre&#x27;)?.invalid &amp;&amp; form.get(&#x27;nombre&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+                Nombre es requerido.
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+              &lt;input formControlName&#x3D;&quot;apellido&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control mt-2&quot; placeholder&#x3D;&quot;Ingrese apellido nuevo&quot;&gt;
+              &lt;div *ngIf&#x3D;&quot;form.get(&#x27;apellido&#x27;)?.invalid &amp;&amp; form.get(&#x27;apellido&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+                Apellido es requerido.
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-12&quot;&gt;
+              &lt;input formControlName&#x3D;&quot;nombre_usuario&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control mt-2&quot; placeholder&#x3D;&quot;nombre de usuario nuevo&quot;&gt;
+              &lt;div *ngIf&#x3D;&quot;form.get(&#x27;nombre_usuario&#x27;)?.invalid &amp;&amp; form.get(&#x27;nombre_usuario&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+                Nombre de usuario es requerido y no debe exceder los 7 caracteres.
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+  
+          &lt;label for&#x3D;&quot;estadoSelect&quot; class&#x3D;&quot;form-label mt-4&quot;&gt;Seleccione estado del usuario&lt;/label&gt;
+          &lt;select class&#x3D;&quot;form-select&quot; id&#x3D;&quot;estadoSelect&quot; formControlName&#x3D;&quot;estado&quot;&gt;
+            &lt;option *ngFor&#x3D;&quot;let estado of estados&quot; [value]&#x3D;&quot;estado&quot;&gt;{{estado}}&lt;/option&gt;
+          &lt;/select&gt;
+          &lt;div *ngIf&#x3D;&quot;form.get(&#x27;estado&#x27;)?.invalid &amp;&amp; form.get(&#x27;estado&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+            Estado es requerido.
+          &lt;/div&gt;
+  
+          &lt;label for&#x3D;&quot;rolSelect&quot; class&#x3D;&quot;form-label mt-4&quot;&gt;Seleccione rol del usuario&lt;/label&gt;
+          &lt;select class&#x3D;&quot;form-select&quot; id&#x3D;&quot;rolSelect&quot; formControlName&#x3D;&quot;rol&quot;&gt;
+            &lt;option *ngFor&#x3D;&quot;let rol of rolesList&quot; [value]&#x3D;&quot;rol&quot;&gt;{{rol}}&lt;/option&gt;
+          &lt;/select&gt;
+          &lt;div *ngIf&#x3D;&quot;form.get(&#x27;rol&#x27;)?.invalid &amp;&amp; form.get(&#x27;rol&#x27;)?.touched&quot; class&#x3D;&quot;text-danger&quot;&gt;
+            Rol es requerido.
+          &lt;/div&gt;
+  
+          &lt;div class&#x3D;&quot;row mt-4 text-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-6&quot;&gt;
+              &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot; class&#x3D;&quot;btn btn-info btn-block&quot;&gt;Aceptar&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-6&quot;&gt;
+              &lt;button routerLink&#x3D;&quot;/GestionUsuarios&quot; class&#x3D;&quot;btn btn-secondary btn-block&quot;&gt;Volver&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/app-base&gt;
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./editar-agregar-usuarios.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-base>    <div class="card text-white bg-success mb-3 text-center" style="max-width: 30rem;">      <div class="card-header">{{operacion}} usuario</div>      <div class="card-body">        <form [formGroup]="form" (ngSubmit)="addUsuario()">          <div class="row">            <div class="col-md-6">              <input formControlName="email" type="text" class="form-control mt-2" placeholder="Ingrese email nuevo">              <div *ngIf="form.get(\'email\')?.invalid && form.get(\'email\')?.touched" class="text-danger">                Email es requerido y debe ser válido.              </div>            </div>            <div class="col-md-6">              <input formControlName="clave" type="password" class="form-control mt-2" placeholder="Ingrese clave nueva">              <div *ngIf="form.get(\'clave\')?.invalid && form.get(\'clave\')?.touched" class="text-danger">                Clave es requerida.              </div>            </div>            <div class="col-md-6">              <input formControlName="nombre" type="text" class="form-control mt-2" placeholder="Ingrese nombre nuevo">              <div *ngIf="form.get(\'nombre\')?.invalid && form.get(\'nombre\')?.touched" class="text-danger">                Nombre es requerido.              </div>            </div>            <div class="col-md-6">              <input formControlName="apellido" type="text" class="form-control mt-2" placeholder="Ingrese apellido nuevo">              <div *ngIf="form.get(\'apellido\')?.invalid && form.get(\'apellido\')?.touched" class="text-danger">                Apellido es requerido.              </div>            </div>            <div class="col-12">              <input formControlName="nombre_usuario" type="text" class="form-control mt-2" placeholder="nombre de usuario nuevo">              <div *ngIf="form.get(\'nombre_usuario\')?.invalid && form.get(\'nombre_usuario\')?.touched" class="text-danger">                Nombre de usuario es requerido y no debe exceder los 7 caracteres.              </div>            </div>          </div>            <label for="estadoSelect" class="form-label mt-4">Seleccione estado del usuario</label>          <select class="form-select" id="estadoSelect" formControlName="estado">            <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>          </select>          <div *ngIf="form.get(\'estado\')?.invalid && form.get(\'estado\')?.touched" class="text-danger">            Estado es requerido.          </div>            <label for="rolSelect" class="form-label mt-4">Seleccione rol del usuario</label>          <select class="form-select" id="rolSelect" formControlName="rol">            <option *ngFor="let rol of rolesList" [value]="rol">{{rol}}</option>          </select>          <div *ngIf="form.get(\'rol\')?.invalid && form.get(\'rol\')?.touched" class="text-danger">            Rol es requerido.          </div>            <div class="row mt-4 text-center">            <div class="col-6">              <button type="submit" [disabled]="form.invalid" class="btn btn-info btn-block">Aceptar</button>            </div>            <div class="col-6">              <button routerLink="/GestionUsuarios" class="btn btn-secondary btn-block">Volver</button>            </div>          </div>        </form>      </div>    </div>  </app-base>  </div>'
+    var COMPONENTS = [{'name': 'ActividadDialogComponent', 'selector': 'app-actividad-dialog'},{'name': 'ActividadesAdminComponent', 'selector': 'app-actividades-admin'},{'name': 'ActividadesEjecutorComponent', 'selector': 'app-actividades-ejecutor'},{'name': 'AdministradorComponent', 'selector': 'app-administrador'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'EditarAgregarUsuariosComponent', 'selector': 'app-editar-agregar-usuarios'},{'name': 'EditarEstadoActividadComponent', 'selector': 'app-editar-estado-actividad'},{'name': 'EjecutorComponent', 'selector': 'app-ejecutor'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'TablaBaseComponent', 'selector': 'app-tabla-actividades'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EditarAgregarUsuariosComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditarAgregarUsuariosComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

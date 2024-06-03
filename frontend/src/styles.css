@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+/* :root {
+    color-scheme: light dark;
+ } */
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    
+}

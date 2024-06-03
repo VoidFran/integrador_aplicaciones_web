@@ -1,0 +1,32 @@
+<app-base>
+  <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+    <div class="card-header">Editar</div>
+    <div class="card-body">
+        <label for="estado" class="form-label mt-4">Seleccione estado de la actividad</label>
+        <select class="form-select" id="estado" formControlName="estado">
+          <option *ngFor="let estado of EstadoActividad" [value]="estado">{{estado}}</option>
+        </select>
+        <div class="row mt-4 text-center">
+          <div class="col-6">
+            <p-button label="Aceptar" (onClick)="enviar()" />
+            <button type="submit" (onClick)="enviar()" class="btn btn-info btn-block">Aceptar</button>
+          </div>
+          <div class="col-6">
+            <button type="button" routerLink="/ejecutor" class="btn btn-secondary btn-block">Volver</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="actividad">
+    <div class="input-container">
+      <label for="estado">Estado: </label>
+      <p-dropdown
+        id="estado"
+        appendTo="body"
+        [options]="estados"
+        formControlName="estado"
+      ></p-dropdown>
+    </div>
+  </ng-container>
+</app-base>

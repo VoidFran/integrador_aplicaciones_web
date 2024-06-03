@@ -1,0 +1,1050 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>probando-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">probando-angular documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ActividadesAdminComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/actividades-admin/actividades-admin.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Pantalla para los usuarios con el rol de ADMINISTRADOR</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-actividades-admin</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/ActividadDialogComponent.html" target="_self" >ActividadDialogComponent</a></code>
+                            <code>ButtonModule</code>
+                            <code>TooltipModule</code>
+                            <code>ToastModule</code>
+                            <code>NgIf</code>
+                            <code>NgFor</code>
+                            <code>RouterModule</code>
+                                <code><a href="../components/TablaBaseComponent.html" target="_self" >TablaBaseComponent</a></code>
+                            <code>TableModule</code>
+                                <code><a href="../components/BaseComponent.html" target="_self" >BaseComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./actividades-admin.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./actividades-admin.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#accion" >accion</a>
+                            </li>
+                            <li>
+                                <a href="#actividades" >actividades</a>
+                            </li>
+                            <li>
+                                <a href="#actividadSeleccionada" >actividadSeleccionada</a>
+                            </li>
+                            <li>
+                                <a href="#columnas" >columnas</a>
+                            </li>
+                            <li>
+                                <a href="#dialogVisible" >dialogVisible</a>
+                            </li>
+                            <li>
+                                <a href="#opcionesDeFiltro" >opcionesDeFiltro</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#auditoria" >auditoria</a>
+                            </li>
+                            <li>
+                                <a href="#editar" >editar</a>
+                            </li>
+                            <li>
+                                <a href="#Gestionusuarios" >Gestionusuarios</a>
+                            </li>
+                            <li>
+                                <a href="#llenarTabla" >llenarTabla</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#nuevo" >nuevo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actividadesService: <a href="../injectables/ActividadesService.html" target="_self">ActividadesService</a>, messageService: MessageService, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actividadesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ActividadesService.html" target="_self" >ActividadesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auditoria"></a>
+                    <span class="name">
+                        <span ><b>auditoria</b></span>
+                        <a href="#auditoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>auditoria()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editar"></a>
+                    <span class="name">
+                        <span ><b>editar</b></span>
+                        <a href="#editar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Gestionusuarios"></a>
+                    <span class="name">
+                        <span ><b>Gestionusuarios</b></span>
+                        <a href="#Gestionusuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Gestionusuarios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="llenarTabla"></a>
+                    <span class="name">
+                        <span ><b>llenarTabla</b></span>
+                        <a href="#llenarTabla"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>llenarTabla()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nuevo"></a>
+                    <span class="name">
+                        <span ><b>nuevo</b></span>
+                        <a href="#nuevo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nuevo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="accion"></a>
+                    <span class="name">
+                        <span ><b>accion</b></span>
+                        <a href="#accion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actividades"></a>
+                    <span class="name">
+                        <span ><b>actividades</b></span>
+                        <a href="#actividades"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ActividadDto.html" target="_self" >ActividadDto[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actividadSeleccionada"></a>
+                    <span class="name">
+                        <span ><b>actividadSeleccionada</b></span>
+                        <a href="#actividadSeleccionada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ActividadDto.html" target="_self" >ActividadDto | null</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="columnas"></a>
+                    <span class="name">
+                        <span ><b>columnas</b></span>
+                        <a href="#columnas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogVisible"></a>
+                    <span class="name">
+                        <span ><b>dialogVisible</b></span>
+                        <a href="#dialogVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="opcionesDeFiltro"></a>
+                    <span class="name">
+                        <span ><b>opcionesDeFiltro</b></span>
+                        <a href="#opcionesDeFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/actividades-admin/actividades-admin.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild, OnInit  } from &#x27;@angular/core&#x27;;
+import { HeaderComponent } from &#x27;../header/header.component&#x27;;
+import { FooterComponent } from &#x27;../footer/footer.component&#x27;;
+import { Table, TableModule } from &#x27;primeng/table&#x27;;
+import { ActividadDto } from &#x27;../../dtos/actividad.dto&#x27;;
+import { ActividadesService } from &#x27;../../services/actividades.service&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { TooltipModule } from &#x27;primeng/tooltip&#x27;;
+import { ActividadDialogComponent } from &#x27;../actividad-dialog/actividad-dialog.component&#x27;;
+import { NgFor, NgIf } from &#x27;@angular/common&#x27;;
+import { MessageService, SelectItem } from &#x27;primeng/api&#x27;;
+import { ToastModule } from &#x27;primeng/toast&#x27;;
+import { Router, RouterModule } from &#x27;@angular/router&#x27;;
+import { TablaBaseComponent } from &#x27;../tabla-base/tabla-base.component&#x27;;
+import { BaseComponent } from &#x27;../base/base.component&#x27;;
+
+/**
+ * Pantalla para los usuarios con el rol de ADMINISTRADOR
+ */
+@Component({
+  selector: &#x27;app-actividades-admin&#x27;,
+  standalone: true,
+  imports: [
+    ActividadDialogComponent,
+    ButtonModule,
+    TooltipModule,
+    ToastModule,
+    NgIf,
+    NgFor,
+    RouterModule,
+    TablaBaseComponent,
+    TableModule,
+    BaseComponent
+  ],
+  templateUrl: &#x27;./actividades-admin.component.html&#x27;,
+  styleUrl: &#x27;./actividades-admin.component.scss&#x27;,
+})
+export class ActividadesAdminComponent implements OnInit {
+  actividades: ActividadDto[] &#x3D; [];
+  dialogVisible: boolean &#x3D; false;
+  accion!: string;
+  actividadSeleccionada!: ActividadDto | null;
+  columnas: { field: string; header: string; filter?: boolean }[] &#x3D; [];
+  opcionesDeFiltro: { value: string; label: string }[] &#x3D; [];
+
+  constructor(
+    private actividadesService: ActividadesService,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.columnas &#x3D; [
+      { field: &#x27;id&#x27;, header: &#x27;Id&#x27; },
+      { field: &#x27;descripcion&#x27;, header: &#x27;Descripción&#x27;, filter: true },
+      { field: &#x27;prioridad&#x27;, header: &#x27;Prioridad&#x27; },
+      { field: &#x27;id_usuario_actual&#x27;, header: &#x27;ID Responsable&#x27; },
+      { field: &#x27;estado&#x27;, header: &#x27;Estado&#x27; },
+    ];
+
+    this.opcionesDeFiltro &#x3D; [
+      { value: &#x27;startsWith&#x27;, label: &#x27;Empieza con&#x27; },
+      { value: &#x27;contains&#x27;, label: &#x27;Contiene&#x27; },
+    ];
+    this.llenarTabla();
+  }
+
+  llenarTabla(): void {
+    this.actividadesService.getActividades().subscribe({
+      next: (res) &#x3D;&gt; {
+        this.actividades &#x3D; res;
+      },
+      error: (err) &#x3D;&gt; {
+        this.messageService.add({
+          severity: &#x27;error&#x27;,
+          summary: &#x27;Ocurrió un error al recuperar la lista de actividades&#x27;,
+        });
+      },
+    });
+  }
+
+  nuevo(): void {
+    this.actividadSeleccionada &#x3D; null;
+    this.accion &#x3D; &#x27;Crear&#x27;;
+    this.dialogVisible &#x3D; true;
+  }
+
+  editar(): void {
+    this.accion &#x3D; &#x27;Editar&#x27;;
+    this.dialogVisible &#x3D; true;
+  }
+
+  Gestionusuarios(): void{
+    this.router.navigateByUrl(&#x27;/GestionUsuarios&#x27;);
+  }
+
+  auditoria(): void {
+    this.router.navigateByUrl(&#x27;/auditoria/&#x27; + this.actividadSeleccionada!.id);
+  }
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-base&gt;
+    &lt;app-tabla-actividades
+      #t
+      [valores]&#x3D;&quot;actividades&quot;
+      [(filaSeleccionada)]&#x3D;&quot;actividadSeleccionada&quot;
+      [columnas]&#x3D;&quot;columnas&quot;
+    &gt;
+      &lt;div&gt;
+        &lt;p-button
+          class&#x3D;&quot;accion&quot;
+          id&#x3D;&quot;añadir&quot;
+          label&#x3D;&quot;Añadir&quot;
+          icon&#x3D;&quot;pi pi-plus&quot;
+          (onClick)&#x3D;&quot;nuevo()&quot;
+        &gt;&lt;/p-button&gt;
+        &lt;p-button
+          class&#x3D;&quot;accion&quot;
+          icon&#x3D;&quot;pi pi-file&quot;
+          label&#x3D;&quot;Exportar&quot;
+          (onClick)&#x3D;&quot;t.table.exportCSV()&quot;
+          pTooltip&#x3D;&quot;Exportar&quot;
+        &gt;&lt;/p-button&gt;
+        &lt;p-button
+          class&#x3D;&quot;accion&quot;
+          id&#x3D;&quot;usuarios&quot;
+          label&#x3D;&quot;Usuarios&quot;
+          icon&#x3D;&quot;pi pi-user&quot;
+          (onClick)&#x3D;&quot;Gestionusuarios()&quot;
+        &gt;&lt;/p-button&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;p-button
+          class&#x3D;&quot;accion&quot;
+          icon&#x3D;&quot;pi pi-pencil&quot;
+          severity&#x3D;&quot;secondary&quot;
+          (onClick)&#x3D;&quot;editar()&quot;
+          pTooltip&#x3D;&quot;Editar&quot;
+          [disabled]&#x3D;&quot;!this.actividadSeleccionada&quot;
+        &gt;&lt;/p-button&gt;
+        &lt;p-button
+          class&#x3D;&quot;accion&quot;
+          icon&#x3D;&quot;pi pi-bars&quot;
+          pTooltip&#x3D;&quot;Auditoria&quot;
+          severity&#x3D;&quot;secondary&quot;
+          [disabled]&#x3D;&quot;!this.actividadSeleccionada&quot;
+          (onClick)&#x3D;&quot;auditoria()&quot;
+        &gt;&lt;/p-button&gt;&lt;/div
+    &gt;&lt;/app-tabla-actividades&gt;
+  &lt;/app-base&gt;
+  &lt;app-actividad-dialog
+    [(visible)]&#x3D;&quot;dialogVisible&quot;
+    [accion]&#x3D;&quot;accion&quot;
+    [actividad]&#x3D;&quot;actividadSeleccionada&quot;
+    (refrescar)&#x3D;&quot;llenarTabla()&quot;
+  /&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-base>    <app-tabla-actividades      #t      [valores]="actividades"      [(filaSeleccionada)]="actividadSeleccionada"      [columnas]="columnas"    >      <div>        <p-button          class="accion"          id="añadir"          label="Añadir"          icon="pi pi-plus"          (onClick)="nuevo()"        ></p-button>        <p-button          class="accion"          icon="pi pi-file"          label="Exportar"          (onClick)="t.table.exportCSV()"          pTooltip="Exportar"        ></p-button>        <p-button          class="accion"          id="usuarios"          label="Usuarios"          icon="pi pi-user"          (onClick)="Gestionusuarios()"        ></p-button>      </div>      <div>        <p-button          class="accion"          icon="pi pi-pencil"          severity="secondary"          (onClick)="editar()"          pTooltip="Editar"          [disabled]="!this.actividadSeleccionada"        ></p-button>        <p-button          class="accion"          icon="pi pi-bars"          pTooltip="Auditoria"          severity="secondary"          [disabled]="!this.actividadSeleccionada"          (onClick)="auditoria()"        ></p-button></div    ></app-tabla-actividades>  </app-base>  <app-actividad-dialog    [(visible)]="dialogVisible"    [accion]="accion"    [actividad]="actividadSeleccionada"    (refrescar)="llenarTabla()"  /></div>'
+    var COMPONENTS = [{'name': 'ActividadDialogComponent', 'selector': 'app-actividad-dialog'},{'name': 'ActividadesAdminComponent', 'selector': 'app-actividades-admin'},{'name': 'ActividadesEjecutorComponent', 'selector': 'app-actividades-ejecutor'},{'name': 'AdministradorComponent', 'selector': 'app-administrador'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BaseComponent', 'selector': 'app-base'},{'name': 'EditarAgregarUsuariosComponent', 'selector': 'app-editar-agregar-usuarios'},{'name': 'EditarEstadoActividadComponent', 'selector': 'app-editar-estado-actividad'},{'name': 'EjecutorComponent', 'selector': 'app-ejecutor'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'TablaBaseComponent', 'selector': 'app-tabla-actividades'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ActividadesAdminComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ActividadesAdminComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

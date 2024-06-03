@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card">
+      <form [formGroup]="form">
+              <div class="p-card-body">
+                <p-card header="Inicia sesión con tu cuenta" >
+                <div class="p-field">
+                  <label for="nombre_usuario">Usuario </label>
+                  <input id="nombre_usuario" pInputText type="text" formControlName="nombre_usuario" class="w-full" />
+                </div>
+                
+
+                <div class="p-field">
+                  <label for="clave">Contraseña </label>
+                  <input id="clave" pInputText type="password" formControlName="clave" class="w-full">
+                </div>
+
+                <!-- <div class="p-link olvidasteClave">
+                  <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>  -->
+                <p-button label="Iniciar sesión" styleClass="w-full" class="boton" (onClick)="login()"></p-button>
+                </p-card>
+              </div>
+              
+        </form>
+    </div>
+</div>
+  
+  
+
+
+
+
+
+
+<p-toast></p-toast>
+

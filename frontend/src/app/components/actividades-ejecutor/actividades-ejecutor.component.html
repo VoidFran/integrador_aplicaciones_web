@@ -1,0 +1,30 @@
+
+    <table *ngIf="listaActividades.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Usuario Asignado</th>
+            <th scope="col">Prioridad</th>
+            <th scope="col">Modificado por</th>
+            <th scope="col">Fecha Modificación</th>
+            <th scope="col">Fecha Registro</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaActividades" class="table-dark">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.id_usuario_actual}}</td>
+            <td>{{item.prioridad}}</td>
+            <td>{{item.id_usuario_modificacion}}</td>
+            <td>{{item.fecha_modificacion |  date:'dd/MM/yyyy'}}</td>
+            <td>{{item.fecha_registro |  date:'dd/MM/yyyy'}}</td>
+            <td>{{item.estado}}</td>
+            <td><button  routerLink="/editarEstado/{{item.id}}"type="button" class="btn btn-outline-success">Editar</button></td> 
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listaActividades.length== 0">Error al encontrar actividades :C</h5>
