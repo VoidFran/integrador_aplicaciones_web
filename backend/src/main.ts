@@ -1,13 +1,12 @@
 /* eslint-disable prettier/prettier */
 // eslint-disable-next-line prettier/prettier
-import { NestFactory, Reflector } from "@nestjs/core"
+import { NestFactory } from "@nestjs/core"
 import { AppModule } from "./app.module"
-import { ValidationPipe, ClassSerializerInterceptor, } from "@nestjs/common"
+import { ValidationPipe } from "@nestjs/common"
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger"
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
-    app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
     app.useGlobalPipes(new ValidationPipe({
         forbidNonWhitelisted: true
     }))

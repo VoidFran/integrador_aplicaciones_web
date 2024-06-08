@@ -7,7 +7,7 @@ import { ActividadEstadoEnum } from "../enums/actividad_estado.enum"
 import { UsuarioService } from "src/usuario/services/usuario.service"
 import { UsuarioEntity } from "src/usuario/entities/usuario.entity"
 import { UsuarioRolesEnum } from "src/usuario/enums/usuario_roles.enum"
-import { ActividadEditarDto } from "../dtos/actividad_editar.dto."
+import { ActividadEditarDto } from "../dtos/actividad_editar.dto"
 
 // Injectable se encarga de instanciar esta clase por nosotros
 // Singleton crea un objeto de una instancia de una clase
@@ -137,4 +137,24 @@ export class ActividadService {
             return await this.actividadRepository.save(actividad)
         }
     }
+
+// Método para buscar una actividad por ID
+async buscarActividadPorId(id: number): Promise<ActividadEntity> {
+    const actividad = await this.actividadRepository.findOne({ where: { id } });
+
+    if (!actividad) {
+        throw new NotFoundException(`Actividad con ID ${id} no encontrada`);
+    }
+    return actividad;
+}
+
+
+
+
+
+
+
+
+
+    
 }

@@ -14,4 +14,9 @@ export class ActividadDto {
     @IsString()
     @IsEnum(ActividadPrioridadEnum)
     prioridad: ActividadPrioridadEnum
+
+    @IsNotEmpty()
+    @IsString()
+    @IsEnum(ActividadEstadoEnum)
+    estado: ActividadEstadoEnum
 }
